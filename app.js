@@ -1,3 +1,6 @@
+const hamburger = document.querySelector(".hamburger");
+const headerNavbarList = document.querySelector("..header-navbar-list");
+
 function filterFunction() {
   var input, filter, a, i;
   input = document.querySelector(".search-input");
