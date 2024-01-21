@@ -6,8 +6,10 @@
   --gray: #969bab;
   --gray-2: rgba(0, 0, 0, 0.50);
   --gray-3: #f5f5f5;
+  --border-gray: rgba(0, 0, 0, 0.30);
   --red: #db4444;
   --green: #00ff66;
+  --dropdown-background: rgba(0, 0, 0, 0.04);
 
   /* typography */
   --title-font: "Inter", sans-serif;
@@ -67,6 +69,7 @@
   --space-20: 20px;
   --space-24: 24px;
   --space-26: 26px;
+  --space-28: 28px;
   --space-30: 30px;
   --space-32: 32px;
   --space-36: 36px;
@@ -83,6 +86,8 @@
   --space-96: 96px;
   --space-100: 100px;
   --space-120: 120px;
+  --space-128: 128px;
+  --space-160: 160px;
 
   /* Opacity */
   --opacity-75: 0.75;
