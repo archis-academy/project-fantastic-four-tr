@@ -50,18 +50,20 @@
           <li><a class="header-navbar-list-item" href="#">Sign Up</a></li>
         </ul>
         <div class="searchbox-container">
-          <input
-            class="search-input"
-            onkeyup="filterFunction()"
-            onclick="toggleSearchDropdown()"
-            type="text"
-            placeholder="What are you looking for?"
-          />
-          <img
-            class="search-image"
-            src="images/search-icon.svg"
-            alt="Search Icon"
-          />
+          <div class="search-input-container">
+            <input
+              class="search-input"
+              onkeyup="filterFunction()"
+              onclick="toggleSearchDropdown()"
+              type="text"
+              placeholder="What are you looking for?"
+            />
+            <img
+              class="search-image"
+              src="images/search-icon.svg"
+              alt="Search Icon"
+            />
+          </div>
           <div id="search-dropdown">
             <a class="search-dropdown-item" href="#">Apple</a>
             <a class="search-dropdown-item" href="#">Bosch</a>

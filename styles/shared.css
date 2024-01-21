@@ -68,6 +68,7 @@ li {
 .header-navbar-list,
 .header-icon-container,
 .searchbox-container,
+.search-input-container,
 .search-dropdown-item{
   display: flex;
   align-items: center;
@@ -161,6 +162,9 @@ li {
 .searchbox-container {
   position: relative;
 }
+.search-input-container{
+  position: relative;
+}
 .search-input {
   position: relative;
   border: none;
@@ -180,16 +184,15 @@ li {
 .search-image {
   cursor: pointer;
   position: absolute;
-  width: 8%;
-  top: 15%;
-  right: 30%;
+  width: var(--space-32);
+  right: 5%;
 }
 #search-dropdown {
   display: none;
   position: absolute;
   flex-direction: column;
   background-color: var(--gray-3);
-  width: 74%;
+  width: 310px;
   top: 100%;
 }
 #search-dropdown.show {
