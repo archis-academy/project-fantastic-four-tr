@@ -1,5 +1,9 @@
 const hamburger = document.querySelector(".hamburger");
-const headerNavbarList = document.querySelector("..header-navbar-list");
+const headerNavbarList = document.querySelector(".header-navbar-list");
+
+hamburger.addEventListener("click", function () {
+  headerNavbarList.classList.toggle("active");
+});
 
 function filterFunction() {
   var input, filter, a, i;
