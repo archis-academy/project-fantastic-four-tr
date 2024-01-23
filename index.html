@@ -55,24 +55,15 @@
             <div class="search-input-container">
               <input
                 class="search-input"
-                onkeyup="filterFunction()"
-                onclick="toggleSearchDropdown()"
                 type="text"
                 placeholder="What are you looking for?"
               />
+              <div id="search-dropdown"></div>
               <img
                 class="search-image"
                 src="images/search-icon.svg"
                 alt="Search Icon"
               />
-            </div>
-            <div id="search-dropdown">
-              <a class="search-dropdown-item" href="#">Apple</a>
-              <a class="search-dropdown-item" href="#">Bosch</a>
-              <a class="search-dropdown-item" href="#">Samsung</a>
-              <a class="search-dropdown-item" href="#">Xiaomi</a>
-              <a class="search-dropdown-item" href="#">Einhell</a>
-              <a class="search-dropdown-item" href="#">Nokia</a>
             </div>
             <div class="header-icon-container">
               <a class="icon-link" href="wishlist.html">
@@ -86,6 +77,6 @@
         </div>
       </header>
     </main>
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

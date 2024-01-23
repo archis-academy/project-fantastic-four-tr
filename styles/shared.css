@@ -187,11 +187,14 @@ li {
   right: 5%;
 }
 #search-dropdown {
-  display: none;
+  white-space: nowrap;
+  z-index: 6;
   position: absolute;
   flex-direction: column;
   background-color: var(--gray-3);
-  width: 310px;
+  width: 100%;
+  max-height: var(--space-400);
+  overflow-y: auto;
   top: 100%;
 }
 #search-dropdown.show {
@@ -200,6 +203,11 @@ li {
 .search-dropdown-item {
   height: var(--space-36);
   padding-left: var(--space-26);
+  width: 85%;
+  display: block;
+  line-height: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #search-dropdown :hover {
   background-color: var(--gray);
@@ -217,6 +225,9 @@ li {
   }
   .header-title-link {
     font-size: var(--fs-16);
+  }
+  .dropdown-item {
+    padding: var(--space-10) var(--space-14);
   }
   .header-navbar {
     width: 100%;
@@ -238,7 +249,6 @@ li {
     font-weight: var(--fw-500);
     line-height: var(--lh-18);
   }
-
   .searchbox-container,
   .header-icon-container {
     gap: var(--space-12);
@@ -255,9 +265,6 @@ li {
   .search-image {
     width: var(--space-24);
   }
-  #search-dropdown {
-    width: 75%;
-  }
   .search-dropdown-item {
     padding-left: var(--space-12);
   }
@@ -269,6 +276,9 @@ li {
     gap: var(--space-8);
     font-size: var(--fs-12);
     justify-content: flex-end;
+  }
+  .dropdown-item {
+    padding: var(--space-10);
   }
   .header-title,
   .header-navbar-title,
@@ -287,13 +297,13 @@ li {
     position: fixed;
     z-index: 6;
     flex-direction: column;
-    background-color: var(--gray-2);
+    background-color: var(--gray);
     width: 40%;
-    height: 100%;
+    height: 88%;
     justify-content: center;
-    gap: var(--space-64);
+    gap: var(--space-50);
     transition: 0.3s ease-in-out;
-    top: 16%;
+    transform: translateY(53%);
     left: -100%;
   }
   .header-navbar-list.active {
