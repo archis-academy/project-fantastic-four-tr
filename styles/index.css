@@ -1,0 +1,10 @@
+/* Homepage Header & Hero */
+.header-navbar-list > :nth-child(1) {
+  border-bottom: solid var(--border-gray) 1px;
+}
+@media screen and (max-width: 1200px) {
+  /* Homepage Header & Hero */
+}
+@media screen and (max-width: 768px) {
+  /* Homepage Header & Hero */
+}
