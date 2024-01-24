@@ -1,10 +1,125 @@
-/* Homepage Header & Hero */
+/* Header */
 .header-navbar-list > :nth-child(1) {
   border-bottom: solid var(--border-gray) 1px;
 }
+/* Homepage Hero */
+.homepage-hero-section,
+.homepage-hero-list,
+.homepage-hero-list-item,
+.woman-dropdown-container,
+.men-dropdown-container,
+.homepage-hero-carousel-container,
+.homepage-hero-carousel-slide,
+.homepage-hero-carousel-tracker,
+.slide-information-container,
+.slide-information-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.homepage-hero-list-item img,
+.woman-dropdown,
+.men-dropdown,
+.homepage-hero-carousel-container {
+  position: relative;
+}
+.woman-dropdown-container,
+.men-dropdown-container,
+.carousel-dots-container{
+  position: absolute;
+}
+.homepage-hero-section {
+  padding: 0 var(--space-128);
+  align-items: flex-start;
+}
+.homepage-hero-list {
+  flex-direction: column;
+  white-space: nowrap;
+  gap: var(--space-26);
+  border-right: solid var(--border-gray) 1px;
+  padding: var(--space-50) var(--space-24) 0 var(--space-12);
+}
+.homepage-hero-list-item {
+  width: 100%;
+  gap: var(--space-56);
+}
+.homepage-hero-list-item :hover {
+  color: var(--gray);
+}
+.homepage-hero-list-item img {
+  cursor: pointer;
+}
+.homepage-hero-list-item-link,
+.dropdown-container-item {
+  color: var(--black);
+  font-size: var(--fs-18);
+  font-weight: var(--fw-500);
+  text-decoration: none;
+}
+
+.woman-dropdown-container,
+.men-dropdown-container {
+  display: none;
+  width: 100%;
+  max-height: var(--space-300);
+  background-color: var(--gray-3);
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: auto;
+  top: 0;
+  left: 100%;
+}
+.dropdown-container-item {
+  width: 100%;
+  padding-left: var(--space-16);
+  display: block;
+  width: 90%;
+  line-height: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.woman-dropdown-container :hover,
+.men-dropdown-container :hover {
+  color: var(--black);
+  background-color: var(--gray);
+}
+.woman-dropdown:hover .woman-dropdown-container,
+.men-dropdown:hover .men-dropdown-container {
+  display: block;
+  z-index: 1;
+}
+.homepage-hero-carousel-container {
+  color: var(--white);
+  width: 80%;
+  padding: 50px 0 0 0px;
+}
+.homepage-hero-carousel-tracker{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+.homepage-hero-carousel-tracker img {
+  width: 50%;
+}
+.homepage-hero-carousel-slide {
+  background-color: var(--black);
+  width: 100%;
+}
+.slide-information-container{
+  justify-content: flex-start;
+  padding-left: 5%;
+}
+.slide-information-title{
+  white-space: nowrap;
+  gap: var(--space-24);
+}
+
+/* Responsiveness */
 @media screen and (max-width: 1200px) {
-  /* Homepage Header & Hero */
+  /* Homepage Hero */
 }
 @media screen and (max-width: 768px) {
-  /* Homepage Header & Hero */
+  /* Homepage Hero */
 }
