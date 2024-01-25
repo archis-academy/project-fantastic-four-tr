@@ -1,0 +1,44 @@
+/* homepage-browse-by-category */
+.browse-by-category-container {
+    max-width: 1300px;
+    height: 500px;
+    margin: auto;
+}
+
+.category-title {
+    display: flex;
+    justify-content: start;
+    text-align: start;
+
+}
+
+.category-rectangle {
+    margin-bottom: -10px;
+}
+
+.category-tit {
+    color: var(--Secondary-2, #DB4444);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600px;
+}
+
+.img-and-title {
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.browse-tit {
+    color: var(--Text2, #000);
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 600px;
+}
+
+.category-sections {
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+
+}
