@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   dots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      clearTimeout(timer);
+      clearInterval(timer);
       setSlideActive(index);
       startTimer();
     });
@@ -88,6 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
     slides.forEach((slide) => {
       slide.className = "homepage-hero-carousel-slide " + slideClass;
     });
+
+    // Dot'a .active sınıfını ekle veya kaldır
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
   }
 
   function nextSlide() {
@@ -96,11 +101,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function startTimer() {
-    timer = setTimeout(() => {
+    timer = setInterval(() => {
       nextSlide();
-      startTimer();
     }, 5000);
   }
 
   startTimer();
 });
+
