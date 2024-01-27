@@ -271,6 +271,11 @@ li {
 }
 @media screen and (max-width: 768px) {
   /* Header */
+  .header-section{
+    z-index: 20;
+    width: 100%;
+    position: fixed;
+  }
   .header-title-content {
     width: 100%;
     gap: var(--space-8);
