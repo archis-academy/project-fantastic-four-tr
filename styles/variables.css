@@ -31,6 +31,7 @@
   --fs-38: 38px;
   --fs-40: 40px;
   --fs-42: 42px;
+  --fs-48: 48px;
 
   /* font weights */
   --fw-100: 100;
@@ -92,6 +93,7 @@
   --space-160: 160px;
   --space-300: 300px;
   --space-400: 400px;
+  --space-500: 500px;
 
   /* Opacity */
   --opacity-75: 0.75;

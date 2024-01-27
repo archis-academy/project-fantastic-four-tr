@@ -29,8 +29,7 @@ const womenDropdownItems = womenClothingProducts.map(
 if (searchInput && womanDropdownContainer && menDropdownContainer) {
   menDropdownContainer.innerHTML = menDropdownItems.join("");
   womanDropdownContainer.innerHTML = womenDropdownItems.join("");
-}
-else{
+} else {
   console.error("Missing items but it's okay, just ignore me. ");
 }
 
@@ -64,3 +63,44 @@ function filterFunction(e) {
     searchDropdown.appendChild(itemLink);
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const dots = document.querySelectorAll(".carousel-dot");
+  const slides = document.querySelectorAll(".homepage-hero-carousel-slide");
+
+  let currentIndex = 0;
+  let timer;
+
+  setSlideActive(currentIndex);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      clearTimeout(timer);
+      setSlideActive(index);
+      startTimer();
+    });
+  });
+
+  function setSlideActive(index) {
+    currentIndex = index;
+    const slideClass = "slide" + (index + 1);
+
+    slides.forEach((slide) => {
+      slide.className = "homepage-hero-carousel-slide " + slideClass;
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % dots.length;
+    setSlideActive(currentIndex);
+  }
+
+  function startTimer() {
+    timer = setTimeout(() => {
+      nextSlide();
+      startTimer();
+    }, 5000);
+  }
+
+  startTimer();
+});
