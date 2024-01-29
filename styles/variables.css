@@ -8,6 +8,7 @@
   --gray-3: #f5f5f5;
   --border-gray: rgba(0, 0, 0, 0.3);
   --red: #db4444;
+  --red-2: #E07575;
   --green: #00ff66;
   --dropdown-background: rgba(0, 0, 0, 0.04);
 
@@ -68,6 +69,7 @@
   --space-16: 16px;
   --space-18: 18px;
   --space-20: 20px;
+  --space-22: 22px;
   --space-24: 24px;
   --space-26: 26px;
   --space-28: 28px;
@@ -90,6 +92,7 @@
   --space-120: 120px;
   --space-128: 128px;
   --space-160: 160px;
+  --space-300: 300px;
   --space-400: 400px;
 
   /* Opacity */

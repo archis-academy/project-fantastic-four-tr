@@ -57,6 +57,90 @@ li {
   transform: translateY(var(--space-8));
 }
 
+.section-starter {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+
+  width: 100%;
+}
+
+.section-title-container,
+.section-leftside,
+.section-title,
+.section-rightside,
+.section-countdown,
+.section-countdown-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title-container,
+.section-countdown-timer {
+  flex-direction: column;
+}
+.section-title-container {
+  gap: var(--space-32);
+}
+.section-leftside {
+  gap: var(--space-96);
+}
+
+.section-title {
+  justify-content: flex-start;
+  gap: var(--space-18);
+  width: 100%;
+}
+.title-rectangle {
+  border-radius: var(--space-6);
+  height: var(--space-36);
+  width: var(--space-22);
+  background-color: var(--red);
+}
+.section-title-text {
+  font-size: var(--fs-16);
+  font-weight: var(--fw-600);
+  color: var(--red);
+}
+.section-header {
+  white-space: nowrap;
+  font-size: var(--fs-36);
+  font-weight: var(--fw-600);
+}
+
+.section-leftside,
+.section-rightside {
+  align-items: end;
+}
+
+.section-rightside {
+  gap: var(--space-10);
+}
+.section-rightside img {
+  cursor: pointer;
+}
+
+.section-countdown-timer {
+  align-items: flex-start;
+}
+
+.section-countdown-text {
+  font-weight: var(--fw-500);
+}
+
+.section-countdown-number {
+  font-size: var(--fs-42);
+  font-weight: var(--fw-700);
+}
+.section-countdown {
+  gap: var(--space-28);
+}
+.section-countdown-colon {
+  color: var(--red-2);
+  font-size: var(--fs-42);
+}
+
 /* Header */
 .header-section,
 .header-title-container,

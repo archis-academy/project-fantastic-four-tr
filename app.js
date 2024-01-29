@@ -43,7 +43,7 @@ async function urunleriGetir() {
   const response = await fetch("https://fakestoreapi.com/products");
   const data = await response.json();
 
-  const rastgeleUrunler = [data[0], data[1], data[2], data[3]];
+  const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
 
   flashSalesDiv.innerHTML = rastgeleUrunler.map((urun) => {
     return `<div class="f-product-card">
@@ -53,8 +53,8 @@ async function urunleriGetir() {
               </div>
               <h3 class="f-product-title">${urun.title}</h3>
               <div class="f-product-price-container">
-                <p class="f-product-new-price">${indirimYap(urun.price, 50)}</p>
-                <s class="f-product-old-price">${urun.price}</s>
+                <p class="f-product-new-price">$${indirimYap(urun.price, 50)}</p>
+                <s class="f-product-old-price">$${urun.price}</s>
               </div>
               <div class="f-products-ratings">
                 <div>

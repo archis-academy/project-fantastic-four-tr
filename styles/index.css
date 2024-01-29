@@ -2,69 +2,96 @@
 .header-navbar-list > :nth-child(1) {
   border-bottom: solid var(--border-gray) 1px;
 }
-@media screen and (max-width: 1200px) {
-  /* Homepage Header & Hero */
-}
-@media screen and (max-width: 768px) {
-  /* Homepage Header & Hero */
-}
-#flashSales{
+
+/* Homepage Today's Products */
+
+.homepage-todays-products-section,
+.homepage-products-container{
   display: flex;
-  gap: 32px;
-  max-width: 1200px;
+  justify-content: center;
+  align-items: center;
+}
+.homepage-todays-products-section {
+  flex-direction: column;
+  padding: var(--space-64) var(--space-128);
+  gap: var(--space-64);
+}
+
+.homepage-products-container {
+  gap: var(--space-32);
+  width: 100%;
   margin: 0 auto;
 }
 
-.f-product-card{
+.f-product-card {
   flex: 1;
+  width: 40%;
 }
 
-.f-product-image-container{
+.f-product-image-container {
   width: 100%;
-  height: 300px;
+  height: var(--space-300);
   position: relative;
+  background-color: var(--gray-3);
+  cursor: pointer;
 }
 
-.f-product-image{
+.f-product-image {
   width: 100%;
   height: 100%;
 }
 
-.f-product-discount{
+.f-product-discount {
   position: absolute;
-  background-color: #DB4444;
+  background-color: #db4444;
   color: white;
   border-radius: 4px;
   padding: 4px 12px;
-  left: 10px;
-  top: 10px;
+  left: var(--space-10);
+  top: var(--space-10);
 }
 
-.f-product-title{
+.f-product-title {
   font-size: 16px;
-  font-weight: 600;
-  height: 40px;
-  margin: 20px 0;
+  font-weight: var(--fw-600);
+  height: var(--space-40);
+  margin: var(--space-20) 0;
 }
 
-
-.f-product-price-container{
+.f-product-price-container {
   display: flex;
-  gap: 8px;
+  gap: var(--space-8);
 }
 
-.f-product-new-price{
-  color: #DB4444;
+.f-product-new-price {
+  color: var(--red);
   font-weight: bold;
 }
 
 .f-product-old-price,
-.f-products-comments{
-  color: #7c7c7c;
+.f-products-comments {
+  color: var(--gray);
   font-weight: bold;
 }
 
-.f-products-ratings{
+.f-products-ratings {
   display: flex;
   gap: 10px;
 }
+
+
+.f-product-image-container{
+  background-color: var(--gray2);
+}
+
+@media screen and (max-width: 1200px) {
+  /* Homepage Header & Hero */
+
+  /* Homepage Today's Products */
+}
+@media screen and (max-width: 768px) {
+  /* Homepage Header & Hero */
+
+  /* Homepage Today's Products */
+}
+
