@@ -2,9 +2,134 @@
 .header-navbar-list > :nth-child(1) {
   border-bottom: solid var(--border-gray) 1px;
 }
+
+/* Homepage Today's Products */
+.homepage-products-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  gap: 36px;
+}
+
+.homepage-todays-products-section {
+  /* padding: var(--space-64) var(--space-128); */
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.f-product-card {
+  flex: 1;
+}
+
+.f-product-image-container {
+  width: 100%;
+  height: var(--space-300);
+  position: relative;
+  background-color: var(--gray-3);
+  cursor: pointer;
+}
+
+.f-product-image {
+  width: 100%;
+  height: 100%;
+}
+
+.f-product-discount {
+  position: absolute;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: var(--space-4);
+  padding: var(--space-4) var(--space-12);
+  left: var(--space-10);
+  top: var(--space-10);
+}
+
+.f-product-title {
+  font-size: var(--fs-16);
+  font-weight: var(--fw-600);
+  height: var(--space-40);
+  margin: var(--space-20) 0;
+}
+
+.f-product-price-container {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.f-product-new-price {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.f-product-old-price,
+.f-products-comments {
+  color: var(--gray);
+  font-weight: bold;
+}
+
+.f-products-ratings {
+  display: flex;
+  gap: 10px;
+}
+
+.f-product-image-container {
+  background-color: var(--gray2);
+}
+
 @media screen and (max-width: 1200px) {
   /* Homepage Header & Hero */
+
+  /* Homepage Today's Products */
+  .homepage-todays-products-section {
+    padding: var(--space-64) var(--space-64);
+    gap: var(--space-44);
+  }
+
+  .homepage-products-container {
+    gap: var(--space-16);
+  }
+
+  .f-product-image-container {
+    height: var(--space-200);
+  }
+  .f-product-title {
+    font-size: var(--space-14);
+  }
+  .f-products-ratings {
+    gap: var(--space-8);
+  }
 }
 @media screen and (max-width: 768px) {
   /* Homepage Header & Hero */
+
+  /* Homepage Today's Products */
+  .homepage-todays-products-section {
+    padding: var(--space-64) var(--space-64);
+    gap: var(--space-44);
+  }
+
+  .homepage-products-container {
+    gap: var(--space-16);
+    flex-direction: column;
+  }
+
+  .f-product-image-container {
+    height: var(--space-160);
+  }
+  .f-product-title {
+    font-size: var(--space-12);
+  }
+  .f-product-card {
+    text-align: center;
+  }
+
+  .f-product-price-container,
+  .f-products-ratings{
+    justify-content: center;
+  }
+
+  .f-product-image {
+    width: 128px;
+  }
 }
