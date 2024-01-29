@@ -18,7 +18,7 @@
   line-height: 20px;
 }
 
-.img-and-title {
+.category-image-and-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
