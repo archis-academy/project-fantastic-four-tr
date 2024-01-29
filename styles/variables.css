@@ -98,4 +98,7 @@
 
   /* Opacity */
   --opacity-75: 0.75;
+
+  /* max width */
+  --max-width: 1400px;
 }
