@@ -220,9 +220,11 @@
 .homepage-todays-products-section {
   /* padding: var(--space-64) var(--space-128); */
   max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 128px auto;
 }
-
+.homepages-today-button{
+  margin-left: 40%;
+}
 .f-product-card {
   flex: 1;
 }
@@ -339,8 +341,8 @@
     bottom: var(--space-26);
     gap: var(--space-38);
   }
-   /* Homepage Today's Products */
-   .homepage-todays-products-section {
+  /* Homepage Today's Products */
+  .homepage-todays-products-section {
     padding: var(--space-64) var(--space-64);
     gap: var(--space-44);
   }

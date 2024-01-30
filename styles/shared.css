@@ -304,7 +304,7 @@ li {
   .section-leftside {
     gap: var(--space-40);
   }
-  
+
   .section-title {
     justify-content: flex-start;
     gap: var(--space-14);
@@ -319,7 +319,7 @@ li {
   .section-rightside {
     gap: var(--space-8);
   }
- 
+
   .section-countdown-number {
     font-size: var(--fs-34);
   }
@@ -386,20 +386,18 @@ li {
   }
 }
 
-
-
 @media screen and (max-width: 768px) {
-   /* Presets */
-   .section-countdown{
+  /* Presets */
+  .section-countdown {
     display: none;
-   }
-   .section-title-container {
+  }
+  .section-title-container {
     gap: var(--space-16);
   }
   .section-leftside {
     gap: var(--space-40);
   }
-  
+
   .section-title {
     justify-content: flex-start;
     gap: var(--space-14);
@@ -414,7 +412,7 @@ li {
   .section-rightside {
     gap: var(--space-8);
   }
- 
+
   .section-countdown-number {
     font-size: var(--fs-34);
   }
@@ -480,9 +478,8 @@ li {
     padding-left: var(--space-12);
   }
 
-
   /* Header */
-  .header-section{
+  .header-section {
     z-index: 20;
     width: 100%;
     position: fixed;
