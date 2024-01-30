@@ -32,7 +32,8 @@
   position: absolute;
 }
 .homepage-hero-section {
-  padding: 0 var(--space-128);
+  max-width: var(--max-width);
+  margin: auto;
   gap: var(--space-32);
   align-items: flex-start;
 }
@@ -41,7 +42,7 @@
   white-space: nowrap;
   gap: var(--space-26);
   border-right: solid var(--border-gray) 1px;
-  padding: var(--space-50) var(--space-24) 0 var(--space-12);
+  padding: var(--space-50) var(--space-24) 0 0;
 }
 .homepage-hero-list-item {
   width: 100%;

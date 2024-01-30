@@ -169,14 +169,17 @@ li {
   justify-content: flex-end;
 }
 .header-title-content {
-  width: 75%;
-  gap: var(--space-96);
+  width: 100%;
+  max-width: var(--max-width);
+  margin: auto;
+  gap: var(--space-350);
   font-size: var(--fs-16);
   font-weight: var(--fw-400);
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .header-title {
   gap: var(--space-12);
+  margin-left: auto;
 }
 .header-title-link {
   font-family: var(--title-font);
@@ -216,9 +219,10 @@ li {
   background-color: var(--gray);
 }
 .header-navbar {
-  width: 85%;
+  width: 100%;
   gap: var(--space-16);
-  margin: var(--space-48) 0 var(--space-16) 0;
+  max-width: var(--max-width);
+  margin: var(--space-48) auto var(--space-16) auto;
   justify-content: space-between;
 }
 .header-navbar-list {

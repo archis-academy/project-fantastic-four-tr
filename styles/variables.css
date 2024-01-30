@@ -96,6 +96,7 @@
   --space-160: 160px;
   --space-200: 200px;
   --space-300: 300px;
+  --space-350: 350px;
   --space-400: 400px;
   --space-500: 500px;
 
@@ -103,5 +104,5 @@
   --opacity-75: 0.75;
 
   /* max width */
-  --max-width: 1400px;
+  --max-width: 1500px;
 }
