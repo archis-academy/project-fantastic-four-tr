@@ -1,0 +1,108 @@
+:root {
+  /* Colors */
+  --black: #000000;
+  --white: #fafafa;
+  --white-2: #ffffff;
+  --gray: #969bab;
+  --gray-2: rgba(0, 0, 0, 0.5);
+  --gray-3: #f5f5f5;
+  --border-gray: rgba(0, 0, 0, 0.3);
+  --red: #db4444;
+  --red-2: #E07575;
+  --green: #00ff66;
+  --dropdown-background: rgba(0, 0, 0, 0.04);
+
+  /* typography */
+  --title-font: "Inter", sans-serif;
+  --ordinary-font: "Poppins", sans-serif;
+  --fs-10: 10px;
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-22: 22px;
+  --fs-24: 24px;
+  --fs-26: 26px;
+  --fs-28: 28px;
+  --fs-30: 30px;
+  --fs-32: 32px;
+  --fs-34: 34px;
+  --fs-36: 36px;
+  --fs-38: 38px;
+  --fs-40: 40px;
+  --fs-42: 42px;
+  --fs-48: 48px;
+  --fs-64: 64px;
+
+  /* font weights */
+  --fw-100: 100;
+  --fw-200: 200;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-800: 800;
+  --fw-900: 900;
+
+  /* line-heights */
+  --lh-10: 10px;
+  --lh-18: 18px;
+  --lh-20: 20px;
+  --lh-22: 22px;
+  --lh-24: 24px;
+  --lh-26: 26px;
+  --lh-28: 28px;
+  --lh-32: 32px;
+  --lh-40: 40px;
+  --lh-50: 50px;
+  --lh-54: 54px;
+  --lh-60: 60px;
+  --lh-64: 64px;
+
+  /* spacing */
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-22: 22px;
+  --space-24: 24px;
+  --space-26: 26px;
+  --space-28: 28px;
+  --space-30: 30px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-38: 38px;
+  --space-40: 40px;
+  --space-44: 44px;
+  --space-48: 48px;
+  --space-50: 50px;
+  --space-56: 56px;
+  --space-64: 64px;
+  --space-70: 70px;
+  --space-74: 74px;
+  --space-80: 80px;
+  --space-90: 90px;
+  --space-96: 96px;
+  --space-100: 100px;
+  --space-120: 120px;
+  --space-128: 128px;
+  --space-160: 160px;
+  --space-200: 200px;
+  --space-300: 300px;
+  --space-350: 350px;
+  --space-400: 400px;
+  --space-500: 500px;
+
+  /* Opacity */
+  --opacity-75: 0.75;
+
+  /* max width */
+  --max-width: 1500px;
+}
