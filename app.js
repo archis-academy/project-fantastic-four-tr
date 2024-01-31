@@ -3,7 +3,9 @@ const headerNavbarList = document.querySelector(".header-navbar-list");
 const searchInput = document.querySelector(".search-input");
 const searchDropdown = document.querySelector("#search-dropdown");
 const searchDropdownItems = document.querySelectorAll(".search-dropdown-item");
-const womanDropdownContainer = document.querySelector(".woman-dropdown-container");
+const womanDropdownContainer = document.querySelector(
+  ".woman-dropdown-container"
+);
 const menDropdownContainer = document.querySelector(".men-dropdown-container");
 
 hamburger.addEventListener("click", function () {
@@ -13,7 +15,6 @@ hamburger.addEventListener("click", function () {
 searchInput.addEventListener("input", (e) => {
   filterFunction(e);
 });
-
 
 function fetchData(url) {
   return fetch(url)
@@ -28,14 +29,13 @@ function fetchData(url) {
     });
 }
 
-
 const apiUrl = "https://fakestoreapi.com/products";
 fetchData(apiUrl).then((data) => {
-  const menClothingProducts = data.filter((product) =>
-    product.category.toLowerCase() === "men's clothing"
+  const menClothingProducts = data.filter(
+    (product) => product.category.toLowerCase() === "men's clothing"
   );
-  const womenClothingProducts = data.filter((product) =>
-    product.category.toLowerCase() === "women's clothing"
+  const womenClothingProducts = data.filter(
+    (product) => product.category.toLowerCase() === "women's clothing"
   );
 
   const menDropdownItems = menClothingProducts.map(
@@ -74,7 +74,6 @@ function filterFunction(e) {
     });
   });
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
   const dots = document.querySelectorAll(".carousel-dot");
@@ -122,10 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function indirimYap(fiyat, indirim) {
-  const sonuc = fiyat - fiyat * indirim / 100;
+  const sonuc = fiyat - (fiyat * indirim) / 100;
   return sonuc.toFixed(2);
 }
-
 
 async function urunleriGetir() {
   const flashSalesDiv = document.querySelector("#flashSales");
@@ -134,15 +132,19 @@ async function urunleriGetir() {
 
   const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
 
-  flashSalesDiv.innerHTML = rastgeleUrunler.map((urun) => {
-    return `<div class="f-product-card">
+  flashSalesDiv.innerHTML = rastgeleUrunler
+    .map((urun) => {
+      return `<div class="f-product-card">
               <div class="f-product-image-container">
                 <img class="f-product-image" src=${urun.image} />
                 <span class="f-product-discount">-50%</span>
               </div>
               <h3 class="f-product-title">${urun.title}</h3>
               <div class="f-product-price-container">
-                <p class="f-product-new-price">$${indirimYap(urun.price, 50)}</p>
+                <p class="f-product-new-price">$${indirimYap(
+                  urun.price,
+                  50
+                )}</p>
                 <s class="f-product-old-price">$${urun.price}</s>
               </div>
               <div class="f-products-ratings">
@@ -152,7 +154,31 @@ async function urunleriGetir() {
                 <p class="f-products-comments">(${urun.rating.count})</p>
               </div>
             </div>`;
-  }).join("");
+    })
+    .join("");
 }
 
 urunleriGetir();
+
+// Homepage Featured Product
+let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
+
+let zamanlayici = setInterval(function () {
+  let simdikiTarih = new Date().getTime();
+
+  let kalanZaman = hedefTarih - simdikiTarih;
+
+  let gun = Math.floor(kalanZaman / (1000 * 60 * 60 * 24));
+  let saat = Math.floor(
+    (kalanZaman % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  let dakika = Math.floor((kalanZaman % (1000 * 60 * 60)) / (1000 * 60));
+  let saniye = Math.floor((kalanZaman % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = gun < 10 ? "0" + gun : gun;
+  document.getElementById("hours").innerHTML = saat < 10 ? "0" + saat : saat;
+  document.getElementById("minutes").innerHTML =
+    dakika < 10 ? "0" + dakika : dakika;
+  document.getElementById("seconds").innerHTML =
+    saniye < 10 ? "0" + saniye : saniye;
+}, 1000);
