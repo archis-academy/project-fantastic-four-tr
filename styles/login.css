@@ -1,6 +1,6 @@
 .login-section {
   position: relative;
-  margin: var(--space-128) 0;
+  padding: var(--space-128) 0;
 }
 .login-section-wrapper,
 .login-button-container {
@@ -41,6 +41,7 @@
 }
 .login-input {
   border: none;
+  background: none;
   border-bottom: 1px solid var(--border-gray);
   height: var(--space-44);
   font-size: var(--fs-16);
@@ -51,4 +52,45 @@
 }
 #forget-password:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1200px) {
+  .login-section {
+    padding: var(--space-128) 0;
+  }
+  .login-image {
+    width: 60%;
+  }
+  .login-container-title h2 {
+    font-size: var(--fs-32);
+  }
+  .login-container-title span,
+  #forget-password {
+    font-size: var(--fs-14);
+  }
+  .login-input-container {
+    margin-top: var(--space-6);
+    gap: var(--space-14);
+  }
+  .login-input {
+    height: var(--space-40);
+    font-size: var(--fs-14);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login-section {
+    padding: var(--space-200) 0 var(--space-128) 0;
+    background-color: var(--light-blue);
+    text-align: center;
+  }
+  .login-image {
+    display: none;
+  }
+  .login-container-title h2 {
+    font-size: var(--fs-30);
+  }
+  .login-section-wrapper {
+    justify-content: center;
+  }
 }
