@@ -278,7 +278,7 @@
 
 .f-products-ratings {
   display: flex;
-  gap: var(--space-10);
+  gap: 10px;
 }
 
 .f-product-image-container {
@@ -294,15 +294,15 @@
 .category-title {
   display: flex;
   align-items: center;
-  gap: var(--space-10);
+  gap: 10px;
 }
 
 .category-tit {
   color: var(--Secondary-2, #db4444);
   font-family: "Poppins", sans-serif;
-  font-size: var(--fs-16);
-  font-weight: var(--fw-600);
-  line-height: var(--lh-20);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
 }
 
 .category-image-and-title {
@@ -312,21 +312,23 @@
 }
 
 .browse-title {
-  font-size: var(--space-36);
+  color: var(--Text2, #000);
+  font-family: "Inter", sans-serif;
+  font-size: 36px;
 }
 
 .category-sections {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--space-30);
-  margin: var(--space-40) auto;
+  gap: 30px;
+  margin: 40px auto;
 }
 
 .category-box {
   cursor: pointer;
-  border-radius: var(--space-4);
-  border: 1px solid var(--border-gray);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -345,7 +347,7 @@
 
 .horizontal-line {
   max-width: var(--max-width);
-  margin: var(--space-100) auto;
+  margin: var(--space-108) auto;
 }
 
 .hz-line {

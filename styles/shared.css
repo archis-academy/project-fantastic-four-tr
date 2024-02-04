@@ -26,7 +26,7 @@ li {
 .primary-button,
 .secondary-button {
   cursor: pointer;
-  border-radius: var(--space-8);
+  border-radius: var(--space-6);
   padding: var(--space-16) var(--space-40);
   font-size: var(--fs-16);
   font-weight: var(--fw-500);
@@ -36,7 +36,7 @@ li {
 .primary-button {
   background-color: var(--red);
   color: var(--white);
-  border: none;
+  border: 1px solid var(--red);
 }
 .secondary-button {
   border: var(--gray-2) 1px solid;
@@ -44,12 +44,10 @@ li {
 }
 .primary-button:hover {
   background-color: var(--white-2);
-  border: 1px solid var(--red);
   color: var(--black);
 }
 .secondary-button:hover {
   background-color: var(--gray-2);
-  border: none;
   color: var(--white-2);
 }
 .primary-button:active,
@@ -701,7 +699,7 @@ li {
     display: none;
   }
   .footer-first-container,
-  .footer-last-container{
+  .footer-last-container {
     display: flex;
     align-items: center;
     text-align: center;
