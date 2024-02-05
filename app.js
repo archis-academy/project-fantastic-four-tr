@@ -162,15 +162,14 @@ urunleriGetir();
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
-  link.addEventListener("click", () => {
-    elemanlar.forEach((link) => {
-      link.style.backgroundColor = "white";
-    });
-    link.style.backgroundColor = "#DB4444";
-  });
-});
-
-// buse geri sayım
+    link.addEventListener("click", () => {
+        elemanlar.forEach((link) => {
+            link.style.backgroundColor = "white";
+        });
+        link.style.backgroundColor = "#DB4444";
+    })
+  })
+  // buse geri sayım
 function countdown(targetDate) {
   const countdownElement = document.querySelector(".section-countdown");
 
