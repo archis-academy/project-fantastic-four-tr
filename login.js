@@ -1,17 +1,18 @@
 const users = [
   {
-    id: 111111,
+    id: "john@example.com",
     password: 123,
   },
   {
-    id: 222222,
+    id: "jane@example.com",
     password: "mysecretpassword",
   },
   {
-    id: 333333,
+    id: "bob@example.com",
     password: 123456,
   },
 ];
+
 const inputUserId = document.querySelector("#input-userid");
 const inputPassword = document.querySelector("#input-password");
 const loginBtn = document.querySelector("#login-btn");
