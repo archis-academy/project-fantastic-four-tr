@@ -159,7 +159,6 @@ async function urunleriGetir() {
 }
 
 urunleriGetir();
-
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
