@@ -160,6 +160,71 @@ async function urunleriGetir() {
 
 urunleriGetir();
 
+const elemanlar = document.querySelectorAll(".category-box");
+
+elemanlar.forEach((link) => {
+  link.addEventListener("click", () => {
+    elemanlar.forEach((link) => {
+      link.style.backgroundColor = "white";
+    });
+    link.style.backgroundColor = "#DB4444";
+  });
+});
+
+// buse geri sayım
+function countdown(targetDate) {
+  const countdownElement = document.querySelector(".section-countdown");
+
+  function updateCountdown() {
+    const currentDate = new Date();
+    const timeDifference = targetDate - currentDate;
+
+    if (timeDifference <= 0) {
+      countdownElement.innerHTML = "Countdown expired!";
+    } else {
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor(
+        (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `
+              <div class="section-countdown-timer">
+                <span class="section-countdown-text">Days</span>
+                <h2 class="section-countdown-number">${days}</h2>
+              </div>
+              <span class="section-countdown-colon">:</span>
+              <div class="section-countdown-timer">
+                <span class="section-countdown-text">Hours</span>
+                <h2 class="section-countdown-number">${hours}</h2>
+              </div>
+              <span class="section-countdown-colon">:</span>
+              <div class="section-countdown-timer">
+                <span class="section-countdown-text">Minutes</span>
+                <h2 class="section-countdown-number">${minutes}</h2>
+              </div>
+              <span class="section-countdown-colon">:</span>
+              <div class="section-countdown-timer">
+                <span class="section-countdown-text">Seconds</span>
+                <h2 class="section-countdown-number">${seconds}</h2>
+              </div>`;
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+}
+
+const currentDate = new Date();
+const targetDate = new Date(currentDate);
+targetDate.setDate(currentDate.getDate() + 4);
+countdown(targetDate);
+
+// buse geri sayım bitiş
+
+
 // Homepage Featured Product
 let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
 
@@ -182,3 +247,4 @@ let zamanlayici = setInterval(function () {
   document.getElementById("seconds").innerHTML =
     saniye < 10 ? "0" + saniye : saniye;
 }, 1000);
+// Homepage Featured Product bitiş

@@ -7,78 +7,77 @@
     <link rel="stylesheet" href="styles/shared.css" />
     <link rel="stylesheet" href="styles/index.css" />
   </head>
-
   <body>
+    <!-- Header Section -->
+    <header class="header-section">
+      <div class="header-title-container">
+        <div class="header-title-content">
+          <div class="header-title">
+            <span>
+              Summer Sale For All Swim Suits And Free Express Delivery - OFF
+              50%!
+            </span>
+            <a class="header-title-link" href="#"> ShopNow </a>
+          </div>
+          <div class="header-languages dropdown">
+            <span>English</span>
+            <img
+              class="dropdown"
+              src="images/dropdown.png"
+              alt="dropdown symbol"
+            />
+            <ul class="dropdown-container">
+              <li class="dropdown-item">English</li>
+              <li class="dropdown-item">German</li>
+              <li class="dropdown-item">Russian</li>
+              <li class="dropdown-item">Chinese</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="header-navbar">
+        <img
+          class="hamburger"
+          src="images/hamburger-icon.png"
+          alt="Hamburger Icon"
+        />
+        <h2 class="header-navbar-title">Exclusive</h2>
+        <ul class="header-navbar-list">
+          <li>
+            <a class="header-navbar-list-item" href="index.html">Home</a>
+          </li>
+          <li><a class="header-navbar-list-item" href="#">Contact</a></li>
+          <li><a class="header-navbar-list-item" href="#">About</a></li>
+          <li><a class="header-navbar-list-item" href="#">Sign Up</a></li>
+        </ul>
+        <div class="searchbox-container">
+          <div class="search-input-container">
+            <input
+              class="search-input"
+              type="text"
+              placeholder="What are you looking for?"
+            />
+            <div id="search-dropdown">
+              <!--Items pulled from app.js-->
+            </div>
+            <img
+              class="search-image"
+              src="images/search-icon.svg"
+              alt="Search Icon"
+            />
+          </div>
+          <div class="header-icon-container">
+            <a class="icon-link" href="wishlist.html">
+              <img src="images/wishlist-icon.svg" alt="Hearth" />
+            </a>
+            <a class="icon-link" href="cart.html">
+              <img src="images/cart-icon.svg" alt="Cart" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
     <main>
-      <!-- Header Section -->
-      <header class="header-section">
-        <div class="header-title-container">
-          <div class="header-title-content">
-            <div class="header-title">
-              <span>
-                Summer Sale For All Swim Suits And Free Express Delivery - OFF
-                50%!
-              </span>
-              <a class="header-title-link" href="#"> ShopNow </a>
-            </div>
-            <div class="header-languages dropdown">
-              <span>English</span>
-              <img
-                class="dropdown"
-                src="images/dropdown.png"
-                alt="dropdown symbol"
-              />
-              <ul class="dropdown-container">
-                <li class="dropdown-item">English</li>
-                <li class="dropdown-item">German</li>
-                <li class="dropdown-item">Russian</li>
-                <li class="dropdown-item">Chinese</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="header-navbar">
-          <img
-            class="hamburger"
-            src="images/hamburger-icon.png"
-            alt="Hamburger Icon"
-          />
-          <h2 class="header-navbar-title">Exclusive</h2>
-          <ul class="header-navbar-list">
-            <li>
-              <a class="header-navbar-list-item" href="index.html">Home</a>
-            </li>
-            <li><a class="header-navbar-list-item" href="#">Contact</a></li>
-            <li><a class="header-navbar-list-item" href="#">About</a></li>
-            <li><a class="header-navbar-list-item" href="#">Sign Up</a></li>
-          </ul>
-          <div class="searchbox-container">
-            <div class="search-input-container">
-              <input
-                class="search-input"
-                type="text"
-                placeholder="What are you looking for?"
-              />
-              <div id="search-dropdown">
-                <!--Items pulled from app.js-->
-              </div>
-              <img
-                class="search-image"
-                src="images/search-icon.svg"
-                alt="Search Icon"
-              />
-            </div>
-            <div class="header-icon-container">
-              <a class="icon-link" href="wishlist.html">
-                <img src="images/wishlist-icon.svg" alt="Hearth" />
-              </a>
-              <a class="icon-link" href="cart.html">
-                <img src="images/cart-icon.svg" alt="Cart" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
       <!-- Homepage Hero Section-->
       <section class="homepage-hero-section">
         <ul class="homepage-hero-list">
@@ -265,28 +264,9 @@
               </div>
               <h2 class="section-header">Flash Sales</h2>
             </div>
-            <div class="section-countdown">
-              <div class="section-countdown-timer">
-                <span class="section-countdown-text">Days</span>
-                <h2 class="section-countdown-number">03</h2>
-              </div>
-              <span class="section-countdown-colon">:</span>
-              <div class="section-countdown-timer">
-                <span class="section-countdown-text">Hours</span>
-                <h2 class="section-countdown-number">23</h2>
-              </div>
-              <span class="section-countdown-colon">:</span>
-              <div class="section-countdown-timer">
-                <span class="section-countdown-text">Minutes</span>
-                <h2 class="section-countdown-number">19</h2>
-              </div>
-              <span class="section-countdown-colon">:</span>
-              <div class="section-countdown-timer">
-                <span class="section-countdown-text">Seconds</span>
-                <h2 class="section-countdown-number">56</h2>
-              </div>
-            </div>
+            <div class="section-countdown"></div>
           </div>
+          <div id="countdown"></div>
           <div class="section-rightside">
             <img src="images/left_arrow.png" alt="Left Arrow" />
             <img src="images/right-arrow.png" alt="Right Arrow" />
@@ -298,41 +278,152 @@
         <button class="homepages-today-button primary-button">
           View All Products
         </button>
-        <!--Homepage Featured Product-->
-        <div class="homepage-featured-product-container">
-          <div class="featured-product-header">
-            <h5 class="green-categories-title">Categories</h5>
-            <h2 class="music-experience-title">
-              Enhance Your Music Experience
-            </h2>
-            <div class="flash-sell-timer-section">
-              <div class="timer-box">
-                <h2 class="timer-number" id="days"></h2>
-                <span class="timer-text">Days</span>
-              </div>
-              <div class="timer-box">
-                <h2 class="timer-number" id="hours"></h2>
-                <span class="timer-text">Hours</span>
-              </div>
-              <div class="timer-box">
-                <h2 class="timer-number" id="minutes"></h2>
-                <span class="timer-text">Minutes</span>
-              </div>
-              <div class="timer-box">
-                <h2 class="timer-number" id="seconds"></h2>
-                <span class="timer-text">Seconds</span>
-              </div>
-            </div>
-            <a href="#" class="buy-now-box">Buy Now!</a>
+      </section>
+      <!--homepage-browse-by-category -->
+      <section class="browse-by-category-section">
+        <div class="category-title">
+          <img class="category-rectangle" src="images/category-rectangle.png" />
+          <h5 class="category-tit">Categories</h5>
+        </div>
+        <div class="category-image-and-title">
+          <h1 class="browse-title">Browse By Category</h1>
+          <div class="icons-imgs">
+            <img class="left-icon" src="images/arrow-left-icon.svg" />
+            <img class="right-icon" src="images/arrow-right-icon.svg" />
           </div>
-          <img
-            class="jbl-image"
-            src="images/jbl-img.png"
-            alt="black-jbl-boombox-img"
-          />
+        </div>
+        <div class="category-sections">
+          <div class="category-box">
+            <img class="icon-img" src="images/Category-CellPhone.png" />
+            <p class="icon-name">Phones</p>
+          </div>
+          <div class="category-box">
+            <img class="icon-img" src="images/Category-Computer.png" />
+            <p class="icon-name">Computers</p>
+          </div>
+          <div class="category-box">
+            <img class="icon-img" src="images/Category-SmartWatch.png" />
+            <p class="icon-name">SmartWatch</p>
+          </div>
+          <div class="category-box">
+            <img class="icon-img" src="images/Category-Camera-3.svg" />
+            <p class="icon-name">Camera</p>
+          </div>
+          <div class="category-box">
+            <img class="icon-img" src="images/Category-Headphone.png" />
+            <p class="icon-name">HeadPhones</p>
+          </div>
+          <div class="category-box">
+            <img class="icon-img" src="images/Category-Gamepad.png" />
+            <p class="icon-name">Gaming</p>
+          </div>
+        </div>
+        <div class="horizontal-line">
+          <span class="hz-line"></span>
         </div>
       </section>
+      <!--Homepage Featured Product-->
+      <div class="homepage-featured-product-container">
+        <div class="featured-product-header">
+          <h5 class="green-categories-title">Categories</h5>
+          <h2 class="music-experience-title">Enhance Your Music Experience</h2>
+          <div class="flash-sell-timer-section">
+            <div class="timer-box">
+              <h2 class="timer-number" id="days"></h2>
+              <span class="timer-text">Days</span>
+            </div>
+            <div class="timer-box">
+              <h2 class="timer-number" id="hours"></h2>
+              <span class="timer-text">Hours</span>
+            </div>
+            <div class="timer-box">
+              <h2 class="timer-number" id="minutes"></h2>
+              <span class="timer-text">Minutes</span>
+            </div>
+            <div class="timer-box">
+              <h2 class="timer-number" id="seconds"></h2>
+              <span class="timer-text">Seconds</span>
+            </div>
+          </div>
+          <a href="#" class="buy-now-box">Buy Now!</a>
+        </div>
+        <img
+          class="jbl-image"
+          src="images/jbl-img.png"
+          alt="black-jbl-boombox-img"
+        />
+      </div>
     </main>
+    <!--Footer-->
+    <footer class="main-footer">
+      <div class="footer-wrapper">
+        <div class="footer-container footer-first-container">
+          <h3>Exclusive</h3>
+          <h4>Subscribe</h4>
+          <div class="footer-mail-container">
+            <span>Get 10% off your first order</span>
+            <div class="footer-input-container">
+              <input
+                class="footer-input"
+                type="text"
+                placeholder="Enter Your Email"
+              />
+              <img
+                class="footer-send-icon"
+                src="images/icon-send.svg"
+                alt="Send Icon"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="footer-container">
+          <h4>Support</h4>
+          <a class="footer-link" href="#">
+            <span>111 Bijoy sarani, Dhaka,</span>
+            <span>DH 1515, Bangladesh.</span>
+          </a>
+          <a class="footer-link" href="#">exclusive@gmail.com</a>
+          <a class="footer-link" href="#">+88015-88888-9999</a>
+        </div>
+        <div class="footer-container">
+          <h4>Account</h4>
+          <a class="footer-link" href="#">My Account</a>
+          <a class="footer-link" href="#">Login / Register</a>
+          <a class="footer-link" href="cart.html">Cart</a>
+          <a class="footer-link" href="wishlist.html">Whishlist</a>
+          <a class="footer-link" href="#">Shop</a>
+        </div>
+        <div class="footer-container">
+          <h4>Quick Link</h4>
+          <a class="footer-link" href="#">Privacy Policy</a>
+          <a class="footer-link" href="#">Terms Of Use </a>
+          <a class="footer-link" href="#">FAQ</a>
+          <a class="footer-link" href="#">Contact</a>
+        </div>
+        <div class="footer-container footer-last-container">
+          <h4>Download App</h4>
+          <div class="footer-download-container">
+            <span class="footer-download-text"
+              >Save $3 with App New User Only</span
+            >
+            <div class="footer-download-image-container">
+              <img src="images/qr-code.png" alt="QR Code" />
+              <div class="footer-logo-container">
+                <img src="images/badge-app-store.svg" alt="Apple Store" />
+                <img src="images//badge-google-play.svg" alt="Google Play" />
+              </div>
+            </div>
+          </div>
+          <div class="footer-socials-container">
+            <img src="images/icon-facebook.svg" alt="Facebook" />
+            <img src="images/icon-twitter.svg" alt="X" />
+            <img src="images/icon-instagram.svg" alt="Instagram" />
+            <img src="images/icon-linkedin.svg" alt="LinkedIn" />
+          </div>
+        </div>
+      </div>
+      <p class="footer-copyright">@ Copyright Rimel 2022. All right reserved</p>
+    </footer>
     <script type="module" src="app.js"></script>
   </body>
 </html>
