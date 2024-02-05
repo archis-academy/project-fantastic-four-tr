@@ -46,6 +46,10 @@ li {
   background-color: var(--white-2);
   color: var(--black);
 }
+.primary-button:disabled {
+  background-color: var(--red-2);
+  color: var(--white);
+}
 .secondary-button:hover {
   background-color: var(--gray-2);
   color: var(--white-2);
