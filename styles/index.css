@@ -490,3 +490,119 @@
     width: 128px;
   }
 }
+
+
+/*Homepage Featured Product*/
+.homepage-featured-product-container {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  max-width: var(--max-width);
+  margin: 80px auto;
+  padding: 40px;
+}
+
+.featured-product-header {
+  margin: 20px 0;
+}
+
+.green-categories-title {
+  color: #0f6;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  padding-bottom: 15px;
+}
+
+.music-experience-title {
+  color: #fafafa;
+  font-family: "Inter", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: 1.92px;
+  max-width: 500px;
+}
+
+.flash-sell-timer-section {
+  display: flex;
+  justify-content: start;
+  gap: 25px;
+  margin: 40px auto;
+}
+
+.timer-box {
+  background-color: white;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  text-align: center;
+}
+
+.timer-text {
+  color: #000;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+
+.buy-now-box {
+  border-radius: 5px;
+  background: #0f6;
+  color: #fafafa;
+  font-family: "Poppins", sans-serif;
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.jbl-image {
+  filter: drop-shadow(0px 0px 75px white);
+}
+
+/*Homepage Featured Product*/
+@media screen and (max-width: 1200px) {
+  .homepage-featured-product-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--space-16);
+  }
+
+  .featured-product-header {
+    text-align: center;
+  }
+
+  .flash-sell-timer-section {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buy-now-box {
+    width: 30%;
+    text-align: center;
+  }
+
+  .jbl-image {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .homepage-featured-product-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .music-experience-title {
+    font-size: 20px;
+    width: 250px;
+  }
+
+  .flash-sell-timer-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}

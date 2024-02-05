@@ -159,7 +159,6 @@ async function urunleriGetir() {
 }
 
 urunleriGetir();
-
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
@@ -223,3 +222,28 @@ targetDate.setDate(currentDate.getDate() + 4);
 countdown(targetDate);
 
 // buse geri sayım bitiş
+
+
+// Homepage Featured Product
+let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
+
+let zamanlayici = setInterval(function () {
+  let simdikiTarih = new Date().getTime();
+
+  let kalanZaman = hedefTarih - simdikiTarih;
+
+  let gun = Math.floor(kalanZaman / (1000 * 60 * 60 * 24));
+  let saat = Math.floor(
+    (kalanZaman % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  let dakika = Math.floor((kalanZaman % (1000 * 60 * 60)) / (1000 * 60));
+  let saniye = Math.floor((kalanZaman % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = gun < 10 ? "0" + gun : gun;
+  document.getElementById("hours").innerHTML = saat < 10 ? "0" + saat : saat;
+  document.getElementById("minutes").innerHTML =
+    dakika < 10 ? "0" + dakika : dakika;
+  document.getElementById("seconds").innerHTML =
+    saniye < 10 ? "0" + saniye : saniye;
+}, 1000);
+// Homepage Featured Product bitiş
