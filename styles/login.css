@@ -81,7 +81,6 @@
 @media screen and (max-width: 768px) {
   .login-section {
     padding: var(--space-200) 0 var(--space-128) 0;
-    background-color: var(--light-blue);
     text-align: center;
   }
   .login-image {
