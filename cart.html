@@ -80,6 +80,71 @@
         </div>
       </div>
     </header>
+    <main>
+      <!-- Cart Page -->
+      <section class="cart-section">
+        <div class="page-title">
+          <a class="page-title-link" href="index.html">Home</a>
+          <span>/</span>
+          <a class="page-title-link" href="cart.html">Cart</a>
+        </div>
+        <div class="cart-product-container">
+          <div class="cart-product">
+            <span>Product</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span>Subtotal</span>
+          </div>
+          <div class="cart-product">
+            <div class="cart-product-info">
+              <img
+                class="cart-product-image"
+                src="images/iphone-pink.png"
+                alt="iPhone"
+              />
+              <span class="cart-product-name">iPhone</span>
+            </div>
+            <span>$650</span>
+            <input class="cart-product-input" value="01" type="number" />
+            <span>$650</span>
+          </div>
+        </div>
+        <div class="cart-product-button-container">
+          <button class="secondary-button">Return To Shop</button>
+          <button class="secondary-button">Update Cart</button>
+        </div>
+        <div class="cart-payment-container">
+          <div class="cart-payment-coupon-container">
+            <input
+              id="input-coupon-code"
+              type="text"
+              placeholder="Coupon Code"
+            />
+            <button id="apply-coupon-button" class="primary-button">
+              Apply Coupon
+            </button>
+          </div>
+          <div class="cart-payment-total-container">
+            <span class="cart-payment-total-title">Cart Total</span>
+            <div class="cart-payment-total">
+              <span class="cart-payment-total-text">Subtotal:</span>
+              <span class="cart-payment-total-text">$1750</span>
+            </div>
+            <div class="cart-payment-total">
+              <span class="cart-payment-total-text">Shipping:</span>
+              <span class="cart-payment-total-text">Free</span>
+            </div>
+            <div class="cart-payment-total">
+              <span class="cart-payment-total-text">Total:</span>
+              <span class="cart-payment-total-text">$1750</span>
+            </div>
+            <button class="primary-button cart-payment-button">
+              Procees to checkout
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
     <!--Footer-->
     <footer class="main-footer">
       <div class="footer-wrapper">
@@ -151,5 +216,6 @@
       <p class="footer-copyright">@ Copyright Rimel 2022. All right reserved</p>
     </footer>
     <script type="module" src="app.js"></script>
+    <script type="module" src="cart.js"></script>
   </body>
 </html>

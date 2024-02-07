@@ -105,6 +105,8 @@
   --opacity-30: 0.3;
   --opacity-75: 0.75;
 
+  /* Shadows */
+  --box-shadow: 0px 1px 13px 0px #0000000d;
   /* max width */
   --max-width: 1500px;
 }

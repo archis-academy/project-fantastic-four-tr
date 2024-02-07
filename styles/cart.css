@@ -1,0 +1,114 @@
+.page-title,
+.cart-product,
+.cart-product-info,
+.cart-product-button-container,
+.cart-payment-container,
+.cart-payment-coupon-container,
+.cart-payment-total {
+  display: flex;
+}
+.cart-product,
+.cart-product-button-container,
+.cart-product-info,
+.cart-payment-container,
+.cart-payment-total {
+  justify-content: space-between;
+}
+.page-title-link,
+.cart-product,
+.cart-product-input,
+.cart-payment-total-title,
+.cart-payment-total-text {
+  font-weight: var(--fw-500);
+}
+.cart-section {
+  max-width: var(--max-width);
+  padding: var(--space-74) 0 var(--space-128) 0;
+  margin: auto;
+}
+.page-title {
+  gap: var(--space-14);
+  color: var(--gray);
+}
+.page-title :nth-last-child(1) {
+  color: var(--black);
+}
+.page-title-link {
+  text-decoration: none;
+  color: var(--gray);
+}
+.page-title-link:hover {
+  text-decoration: underline;
+}
+.cart-product-container {
+  margin-top: var(--space-90);
+}
+.cart-product {
+  margin-top: var(--space-48);
+  font-size: var(--fs-18);
+  box-shadow: var(--box-shadow);
+  padding: var(--space-36) var(--space-50);
+  align-items: center;
+}
+.cart-product span {
+  width: var(--space-90);
+}
+.cart-product-info {
+  position: relative;
+  align-items: center;
+}
+.cart-product-image {
+  position: absolute;
+  max-width: var(--space-80);
+}
+.cart-product-input {
+  border-radius: var(--space-8);
+  border: var(--border-gray) solid 2px;
+  font-size: var(--fs-26);
+  height: var(--lh-40);
+  padding: 0 var(--space-16);
+  width: 64px;
+}
+.cart-product-name {
+  transform: translateX(var(--space-100));
+}
+.cart-product-button-container {
+  margin-top: var(--space-26);
+}
+.cart-payment-container {
+  margin-top: var(--space-70);
+  align-items: flex-start;
+}
+.cart-payment-coupon-container {
+  gap: var(--space-20);
+}
+#input-coupon-code {
+  border-radius: var(--space-4);
+  border: var(--black) solid 1px;
+  font-size: var(--fs-16);
+  padding: 0 var(--space-64) 0 var(--space-26);
+}
+.cart-payment-total-container {
+  border: var(--black) solid 2px;
+  border-radius: var(--space-4);
+  padding: var(--space-24);
+  width: 30%;
+}
+.cart-payment-total-title {
+  font-size: var(--fs-20);
+}
+.cart-payment-total {
+  border-bottom: var(--border-gray) solid 2px;
+  margin-top: var(--space-14);
+}
+.cart-payment-total:nth-last-child(2) {
+  border: none;
+}
+.cart-payment-total-text {
+  font-size: var(--fs-18);
+  line-height: var(--lh-50);
+}
+.cart-payment-button {
+  display: block;
+  margin: 0 auto;
+}

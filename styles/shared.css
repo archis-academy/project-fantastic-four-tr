@@ -26,8 +26,8 @@ li {
 .primary-button,
 .secondary-button {
   cursor: pointer;
-  border-radius: var(--space-6);
-  padding: var(--space-16) var(--space-40);
+  border-radius: var(--space-4);
+  padding: var(--space-16) var(--space-50);
   font-size: var(--fs-16);
   font-weight: var(--fw-500);
   transition-duration: 0.4s;
