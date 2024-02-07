@@ -225,6 +225,8 @@
 }
 .homepages-today-button {
   margin-left: 40%;
+  justify-content: center;
+  
 }
 .f-product-card {
   flex: 1;
