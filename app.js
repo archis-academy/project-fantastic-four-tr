@@ -162,14 +162,14 @@ urunleriGetir();
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
-    link.addEventListener("click", () => {
-        elemanlar.forEach((link) => {
-            link.style.backgroundColor = "white";
-        });
-        link.style.backgroundColor = "#DB4444";
-    })
-  })
-  // buse geri sayım
+  link.addEventListener("click", () => {
+    elemanlar.forEach((link) => {
+      link.style.backgroundColor = "white";
+    });
+    link.style.backgroundColor = "#DB4444";
+  });
+});
+// buse geri sayım
 function countdown(targetDate) {
   const countdownElement = document.querySelector(".section-countdown");
 
@@ -221,7 +221,6 @@ targetDate.setDate(currentDate.getDate() + 4);
 countdown(targetDate);
 
 // buse geri sayım bitiş
-
 
 // Homepage Featured Product
 let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
