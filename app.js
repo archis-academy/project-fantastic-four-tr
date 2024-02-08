@@ -127,7 +127,8 @@ function indirimYap(fiyat, indirim) {
 
 async function urunleriGetir() {
   const flashSalesDiv = document.querySelector("#flashSales");
-  const response = await fetch("https://fakestoreapi.com/products");
+  if (flashSalesDiv) {
+    const response = await fetch("https://fakestoreapi.com/products");
   const data = await response.json();
 
   const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
@@ -156,22 +157,30 @@ async function urunleriGetir() {
             </div>`;
     })
     .join("");
+  } else {
+    console.error("Flash sales element not found!");
+  }
 }
 
 urunleriGetir();
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
-    link.addEventListener("click", () => {
-        elemanlar.forEach((link) => {
-            link.style.backgroundColor = "white";
-        });
-        link.style.backgroundColor = "#DB4444";
-    })
-  })
-  // buse geri sayım
+  link.addEventListener("click", () => {
+    elemanlar.forEach((link) => {
+      link.style.backgroundColor = "white";
+    });
+    link.style.backgroundColor = "#DB4444";
+  });
+});
+// buse geri sayım
 function countdown(targetDate) {
   const countdownElement = document.querySelector(".section-countdown");
+
+  if (!countdownElement) {
+    console.error("Countdown element not found!");
+    return;
+  }
 
   function updateCountdown() {
     const currentDate = new Date();
@@ -222,27 +231,34 @@ countdown(targetDate);
 
 // buse geri sayım bitiş
 
-
 // Homepage Featured Product
-let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
+const daysElement = document.getElementById("days");
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
 
-let zamanlayici = setInterval(function () {
-  let simdikiTarih = new Date().getTime();
+if (daysElement && hoursElement && minutesElement && secondsElement) {
+  let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
 
-  let kalanZaman = hedefTarih - simdikiTarih;
+  let zamanlayici = setInterval(function () {
+    let simdikiTarih = new Date().getTime();
 
-  let gun = Math.floor(kalanZaman / (1000 * 60 * 60 * 24));
-  let saat = Math.floor(
-    (kalanZaman % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  let dakika = Math.floor((kalanZaman % (1000 * 60 * 60)) / (1000 * 60));
-  let saniye = Math.floor((kalanZaman % (1000 * 60)) / 1000);
+    let kalanZaman = hedefTarih - simdikiTarih;
 
-  document.getElementById("days").innerHTML = gun < 10 ? "0" + gun : gun;
-  document.getElementById("hours").innerHTML = saat < 10 ? "0" + saat : saat;
-  document.getElementById("minutes").innerHTML =
-    dakika < 10 ? "0" + dakika : dakika;
-  document.getElementById("seconds").innerHTML =
-    saniye < 10 ? "0" + saniye : saniye;
-}, 1000);
+    let gun = Math.floor(kalanZaman / (1000 * 60 * 60 * 24));
+    let saat = Math.floor(
+      (kalanZaman % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    let dakika = Math.floor((kalanZaman % (1000 * 60 * 60)) / (1000 * 60));
+    let saniye = Math.floor((kalanZaman % (1000 * 60)) / 1000);
+
+    daysElement.innerHTML = gun < 10 ? "0" + gun : gun;
+    hoursElement.innerHTML = saat < 10 ? "0" + saat : saat;
+    minutesElement.innerHTML = dakika < 10 ? "0" + dakika : dakika;
+    secondsElement.innerHTML = saniye < 10 ? "0" + saniye : saniye;
+  }, 1000);
+} else {
+  console.error("Elements not found");
+}
+
 // Homepage Featured Product bitiş
