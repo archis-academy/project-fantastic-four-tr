@@ -245,3 +245,36 @@ let zamanlayici = setInterval(function () {
     saniye < 10 ? "0" + saniye : saniye;
 }, 1000);
 // Homepage Featured Product bitiş
+
+// Homepage Explore Products Başlangıç
+const exploreProductsContainer = document.querySelector(
+  "#exploreProductsContainer"
+);
+
+async function fetchExploreProducts() {
+  const response = await fetch("https://fakestoreapi.com/products");
+  const data = await response.json();
+  const limitedProducts = data.slice(0, 8);
+
+  const exploreProductsHTML = limitedProducts
+    .map((urun) => {
+      return `
+            <div class="explore-products-card">
+              <img class="explore-products-card-img" src=${urun.image} />
+              <h3 class="explore-products-card-title">${urun.title}</h3>
+              <div class="explore-price-stars">
+              <p class="explore-products-card-price">$${urun.price}</p>
+                <img class="explore-stars" src="./images/five-star.png" alt="star-icon">
+                <p class="explore-products-comments">(${urun.rating.count})</p>
+                </div>
+            </div>
+           `;
+    })
+    .join("");
+
+  exploreProductsContainer.innerHTML = exploreProductsHTML;
+}
+
+fetchExploreProducts();
+
+// Homepage Explore Products Bitiş
