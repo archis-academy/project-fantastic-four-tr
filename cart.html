@@ -104,9 +104,9 @@
               />
               <span class="cart-product-name">iPhone</span>
             </div>
-            <span>$650</span>
+            <span class="cart-product-price">$650</span>
             <input class="cart-product-input" value="01" type="number" />
-            <span>$650</span>
+            <span class="cart-product-subtotal">$650</span>
           </div>
           <div class="cart-product">
             <div class="cart-product-info">
@@ -117,40 +117,24 @@
               />
               <span class="cart-product-name">iPhone</span>
             </div>
-            <span>$650</span>
+            <span class="cart-product-price">$650</span>
             <input class="cart-product-input" value="01" type="number" />
-            <span>$650</span>
-          </div>
-          <div class="cart-product">
-            <div class="cart-product-info">
-              <img
-                class="cart-product-image"
-                src="images/iphone-pink.png"
-                alt="iPhone"
-              />
-              <span class="cart-product-name">iPhone</span>
-            </div>
-            <span>$650</span>
-            <input class="cart-product-input" value="01" type="number" />
-            <span>$650</span>
-          </div>
-          <div class="cart-product">
-            <div class="cart-product-info">
-              <img
-                class="cart-product-image"
-                src="images/iphone-pink.png"
-                alt="iPhone"
-              />
-              <span class="cart-product-name">iPhone</span>
-            </div>
-            <span>$650</span>
-            <input class="cart-product-input" value="01" type="number" />
-            <span>$650</span>
+            <span class="cart-product-subtotal">$650</span>
           </div>
         </div>
         <div class="cart-product-button-container">
-          <button class="secondary-button cart-product-button">Return To Shop</button>
-          <button class="secondary-button cart-product-button">Update Cart</button>
+          <button
+            id="button-return-shop"
+            class="secondary-button cart-product-button"
+          >
+            Return To Shop
+          </button>
+          <button
+            id="button-update-cart"
+            class="secondary-button cart-product-button"
+          >
+            Update Cart
+          </button>
         </div>
         <div class="cart-payment-container">
           <div class="cart-payment-coupon-container">
@@ -167,17 +151,22 @@
             <span class="cart-payment-total-title">Cart Total</span>
             <div class="cart-payment-total">
               <span class="cart-payment-total-text">Subtotal:</span>
-              <span class="cart-payment-total-text">$1750</span>
+              <span id="subtotal" class="cart-payment-total-text">$0</span>
             </div>
             <div class="cart-payment-total">
               <span class="cart-payment-total-text">Shipping:</span>
-              <span class="cart-payment-total-text">Free</span>
+              <span id="shipping-price" class="cart-payment-total-text"
+                >$0</span
+              >
             </div>
             <div class="cart-payment-total">
               <span class="cart-payment-total-text">Total:</span>
-              <span class="cart-payment-total-text">$1750</span>
+              <span id="total" class="cart-payment-total-text">$0</span>
             </div>
-            <button class="primary-button cart-payment-button">
+            <button
+              id="button-checkout"
+              class="primary-button cart-payment-button"
+            >
               Procees to checkout
             </button>
           </div>
