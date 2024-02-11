@@ -66,6 +66,11 @@
   position: absolute;
   max-width: var(--space-80);
 }
+.cart-product-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .cart-product-input {
   border-radius: var(--space-8);
   border: var(--border-gray) solid 2px;

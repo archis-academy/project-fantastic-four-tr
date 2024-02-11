@@ -50,11 +50,45 @@ const buttonReturnShop = document.querySelector("#button-return-shop");
 const buttonUpdateCart = document.querySelector("#button-update-cart");
 const buttonApplyCoupon = document.querySelector("#apply-coupon-button");
 const buttonCheckout = document.querySelector("#button-checkout");
+const cartProductContainer = document.querySelector(".cart-product-container");
 
 const subtotal = document.querySelector("#subtotal");
 const shippingPrice = document.querySelector("#shipping-price");
 const total = document.querySelector("#total");
 
+const apiUrl = "https://fakestoreapi.com/products";
+const randomProducts = [5, 8, 3, 12];
+
+async function fetchProducts() {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const selectedProducts = randomProducts.map((index) => data[index]);
+
+    const productContainers = selectedProducts
+      .map(
+        (product) => `
+      <div class="cart-product">
+        <div class="cart-product-info">
+          <img class="cart-product-image" src="${product.image}" alt="${product.title}" />
+          <span class="cart-product-name">${product.title}</span>
+        </div>
+        <span class="cart-product-price">$${product.price}</span>
+        <input class="cart-product-input" value="01" type="number" />
+        <span class="cart-product-subtotal">$${product.price}</span>
+      </div>
+    `
+      )
+      .join("");
+
+    cartProductContainer.innerHTML += productContainers;
+  } catch (error) {
+    console.error("Error fetching datas:", error);
+  }
+}
+
+fetchProducts();
 checkPayment();
 
 buttonReturnShop.addEventListener("click", function () {
@@ -90,7 +124,7 @@ function updateCartProductSubtotal() {
 
   const subtotal = price * quantity;
   cartProduct.querySelector(".cart-product-subtotal").textContent =
-    "$" + subtotal;
+    "$" + subtotal.toFixed(2);
 }
 
 function updateCart() {
