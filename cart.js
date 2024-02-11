@@ -95,28 +95,43 @@ function updateCartProductSubtotal() {
 
 function updateCart() {
   let totalSubtotal = 0;
+  let totalQuantity = 0;
+
   cartProducts.forEach((cartProductEach) => {
     const subtotalElements = cartProductEach.querySelectorAll(
       ".cart-product-subtotal"
     );
-    if (subtotalElements.length > 1) {
-      shippingPrice.textContent = "$0.00";
-    } else {
-      subtotalElements.forEach((subtotalElement) => {
-        const subtotalValue = parseFloat(
-          subtotalElement.textContent.replace("$", "")
-        );
-        totalSubtotal += subtotalValue;
-      });
+    subtotalElements.forEach((subtotalElement) => {
+      const subtotalValue = parseFloat(
+        subtotalElement.textContent.replace("$", "")
+      );
+      totalSubtotal += subtotalValue;
+    });
+
+    const quantityInput = cartProductEach.querySelector(".cart-product-input");
+    if (quantityInput) {
+      const quantity = parseInt(quantityInput.value);
+      totalQuantity += quantity;
     }
   });
 
   subtotal.textContent = "$" + totalSubtotal.toFixed(2);
+
+  // Toplam fiyat 1300 doları geçerse veya 0 ise kargo ücreti bedava olacak
   if (totalSubtotal > 1300 || totalSubtotal === 0) {
     shippingPrice.textContent = "$0.00";
   } else {
-    shippingPrice.textContent = "$50.00";
+    // Tek bir ürün varsa, kargo ücreti 50 dolar olacak
+    if (totalQuantity === 1) {
+      shippingPrice.textContent = "$50.00";
+    } else {
+      // Birden fazla ürün olduğunda, her bir ek ürün için 10 dolar eklenecek
+      let additionalShippingCost = Math.max(0, totalQuantity - 1) * 10;
+      let shippingCost = Math.min(50 + additionalShippingCost, 115); // 115 doları geçmeyecek şekilde sınırlandırma
+      shippingPrice.textContent = "$" + shippingCost.toFixed(2);
+    }
   }
+
   calculate();
 }
 
@@ -151,9 +166,6 @@ function calculate() {
   const shippingPriceValue = parseFloat(
     shippingPrice.textContent.replace("$", "").replace(",", "")
   );
-  console.log("Subtotal value:", subtotal.textContent);
-  console.log("Shipping price value:", shippingPrice.textContent);
-  console.log("total value:", total.textContent);
 
   const totalValue = subtotalValue + shippingPriceValue;
 
