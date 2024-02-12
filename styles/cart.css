@@ -65,6 +65,7 @@
 .cart-product-image {
   position: absolute;
   max-width: var(--space-80);
+  max-height: var(--space-70);
 }
 .cart-product-name {
   overflow: hidden;

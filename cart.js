@@ -57,13 +57,12 @@ const shippingPrice = document.querySelector("#shipping-price");
 const total = document.querySelector("#total");
 
 const apiUrl = "https://fakestoreapi.com/products";
-const randomProducts = [5, 8, 3, 12];
+const randomProducts = [16, 5, 14, 0];
 
 async function fetchProducts() {
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
-
     const selectedProducts = randomProducts.map((index) => data[index]);
 
     const productContainers = selectedProducts
@@ -83,6 +82,9 @@ async function fetchProducts() {
       .join("");
 
     cartProductContainer.innerHTML += productContainers;
+
+    // Dinamik olarak eklenen öğeler için olay dinleyicilerini yeniden ekle
+    addEventListenersToDynamicElements();
   } catch (error) {
     console.error("Error fetching datas:", error);
   }
@@ -91,36 +93,67 @@ async function fetchProducts() {
 fetchProducts();
 checkPayment();
 
+// Bu olmazsa "inner.html" komutları düzgün çalışmıyor, sadece HTML'in içindeki manuel olarak eklenenler çalışıyor.
+cartProductContainer.addEventListener("input", function (event) {
+  const targetElement = event.target;
+  if (targetElement && targetElement.classList.contains("cart-product-input")) {
+    addLeadingZero.call(targetElement);
+    updateCartProductSubtotal(targetElement);
+  }
+});
+
 buttonReturnShop.addEventListener("click", function () {
   window.location.href = "index.html";
 });
 
-buttonUpdateCart.addEventListener("click", updateCart);
-
-inputCartQuantities.forEach((input) => {
-  input.addEventListener("input", addLeadingZero);
-  input.addEventListener("input", updateCartProductSubtotal);
+buttonUpdateCart.addEventListener("click", function () {
+  updateCart();
 });
+
+function addEventListenersToDynamicElements() {
+  const inputCartQuantities = document.querySelectorAll(".cart-product-input");
+
+  // inputCartQuantities üzerinde döngü yaparak her birine olay dinleyicisi ekle
+  inputCartQuantities.forEach((input) => {
+    input.addEventListener("input", addLeadingZero);
+    input.addEventListener("input", updateCartProductSubtotal);
+  });
+}
 
 function addLeadingZero() {
   let quantityValue = this.value;
+  // İşareti kaldırarak negatif girişlerin düzeltilmesi
+  if (quantityValue.startsWith("-")) {
+    quantityValue = "0";
+  }
+  // Düzeltilmiş değer bir hane ise başına '0' eklenmesi
   if (quantityValue.length === 1) {
     quantityValue = "0" + quantityValue;
   }
-  if (quantityValue < 0) {
-    quantityValue = "0" + 0;
-  }
+  //console.log(quantityValue);
   this.value = quantityValue;
 }
 
-function updateCartProductSubtotal() {
-  const cartProduct = this.closest(".cart-product");
+//Bu fonksiyonu kullanmazsak programı bozmayan ama konsol ekranında görülen hatalara sebep oluyor.
+function findClosestCartProduct(element) {
+  while (element) {
+    if (element.classList && element.classList.contains("cart-product")) {
+      return element;
+    }
+    element = element.parentNode;
+  }
+  return null;
+}
+
+function updateCartProductSubtotal(inputElement) {
+  let cartProduct = findClosestCartProduct(inputElement);
+  if (!cartProduct) return;
 
   const priceText = cartProduct.querySelector(
     ".cart-product-price"
   ).textContent;
   const price = parseFloat(priceText.replace("$", ""));
-  const quantity = parseInt(this.value);
+  const quantity = parseInt(inputElement.value);
 
   const subtotal = price * quantity;
   cartProduct.querySelector(".cart-product-subtotal").textContent =
@@ -130,6 +163,8 @@ function updateCartProductSubtotal() {
 function updateCart() {
   let totalSubtotal = 0;
   let totalQuantity = 0;
+
+  const cartProducts = document.querySelectorAll(".cart-product");
 
   cartProducts.forEach((cartProductEach) => {
     const subtotalElements = cartProductEach.querySelectorAll(
@@ -166,7 +201,12 @@ function updateCart() {
     }
   }
 
-  calculate();
+  // Toplamı güncelle
+  const totalValue =
+    totalSubtotal + parseFloat(shippingPrice.textContent.replace("$", ""));
+  total.textContent = "$" + totalValue.toFixed(2);
+
+  checkPayment(); // Ödeme kontrolünü yap
 }
 
 function checkPayment() {
@@ -176,8 +216,11 @@ function checkPayment() {
 
   const subtotalIsFree = subtotalText === "$0" || subtotalText === "$0.00";
   const shippingPriceIsFree =
-    shippingPriceText === "$0" || shippingPriceText === "$0.00";
-  const totalIsFree = totalText === "$0" || totalText === "$0.00";
+    shippingPriceText === "Free" ||
+    shippingPriceText === "$0" ||
+    shippingPriceText === "$0.00";
+  const totalIsFree =
+    totalText === "Free" || totalText === "$0" || totalText === "$0.00";
 
   if (subtotalIsFree) {
     subtotal.textContent = "$0";
@@ -190,20 +233,4 @@ function checkPayment() {
   if (totalIsFree) {
     total.textContent = "$0";
   }
-}
-
-function calculate() {
-  total.textContent = "$0";
-  const subtotalValue = parseFloat(
-    subtotal.textContent.replace("$", "").replace(",", "")
-  );
-  const shippingPriceValue = parseFloat(
-    shippingPrice.textContent.replace("$", "").replace(",", "")
-  );
-
-  const totalValue = subtotalValue + shippingPriceValue;
-
-  total.textContent = "$" + totalValue.toFixed(2);
-
-  checkPayment();
 }
