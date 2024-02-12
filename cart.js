@@ -36,19 +36,12 @@ const discountCoupons = [
     message: "25% discount applied.",
   },
 ];
-/*Discount Test*/
-const examplePrice = 650;
-const discountRate = discountCoupons[1].discount;
-const discountedPrice = examplePrice - examplePrice * discountRate;
-console.log("Discounted Price: $" + discountedPrice.toFixed(2));
-console.log(discountCoupons[1].message);
-/*Discount Test Over*/
-
 const inputCartQuantities = document.querySelectorAll(".cart-product-input");
 const cartProducts = document.querySelectorAll(".cart-product");
 const buttonReturnShop = document.querySelector("#button-return-shop");
 const buttonUpdateCart = document.querySelector("#button-update-cart");
 const buttonApplyCoupon = document.querySelector("#apply-coupon-button");
+const inputCouponCode = document.querySelector("#input-coupon-code");
 const buttonCheckout = document.querySelector("#button-checkout");
 const cartProductContainer = document.querySelector(".cart-product-container");
 
@@ -57,7 +50,7 @@ const shippingPrice = document.querySelector("#shipping-price");
 const total = document.querySelector("#total");
 
 const apiUrl = "https://fakestoreapi.com/products";
-const randomProducts = [16, 5, 14, 0];
+const randomProducts = [16, 18, 14, 0];
 
 async function fetchProducts() {
   try {
@@ -89,7 +82,7 @@ async function fetchProducts() {
     console.error("Error fetching datas:", error);
   }
 }
-
+buttonApplyCoupon.disabled = true;
 fetchProducts();
 checkPayment();
 
@@ -106,8 +99,11 @@ buttonReturnShop.addEventListener("click", function () {
   window.location.href = "index.html";
 });
 
+buttonApplyCoupon.addEventListener("click", applyCoupon);
+
 buttonUpdateCart.addEventListener("click", function () {
   updateCart();
+  buttonApplyCoupon.disabled = false; // Update Cart düğmesine tıklandığında Apply Coupon düğmesini etkinleştir
 });
 
 function addEventListenersToDynamicElements() {
@@ -160,7 +156,14 @@ function updateCartProductSubtotal(inputElement) {
     "$" + subtotal.toFixed(2);
 }
 
+let discountElement;
 function updateCart() {
+  // İndirim miktarını temizle
+  if (discountElement) {
+    discountElement.remove();
+    discountElement = null;
+  }
+
   let totalSubtotal = 0;
   let totalQuantity = 0;
 
@@ -233,4 +236,64 @@ function checkPayment() {
   if (totalIsFree) {
     total.textContent = "$0";
   }
+}
+
+function applyCoupon() {
+  const couponCode = inputCouponCode.value.trim();
+
+  // Kupon kodunun geçerli olup olmadığını kontrol ediyor
+  const coupon = discountCoupons.find((coupon) => coupon.coupon === couponCode);
+
+  if (!coupon) {
+    alert("Invalid coupon code. Please enter a valid coupon code.");
+    return;
+  }
+
+  // Toplam fiyatı alıyor
+  const totalSubtotal = parseFloat(subtotal.textContent.replace("$", ""));
+
+  // Eğer toplam tutar 0 ise ve kupon uygulanmaya çalışıldıysa uyarı göster
+  if (totalSubtotal === 0) {
+    alert("You cannot apply a coupon code because your cart is empty.");
+    return;
+  }
+
+  // İndirim tutarını hesaplıyor
+  const discountAmount = totalSubtotal * coupon.discount;
+
+  // Toplam fiyatı güncelle, indirim tutarını çıkar
+  const discountedTotal = totalSubtotal - discountAmount;
+  total.textContent = "$" + discountedTotal.toFixed(2);
+
+  // İndirim kısmını göster
+  if (discountElement) {
+    const discountPriceElement = discountElement.querySelector(
+      ".cart-payment-total-text:last-child"
+    );
+    discountPriceElement.textContent = "$" + -discountAmount.toFixed(2);
+  } else {
+    discountElement = document.createElement("div");
+    discountElement.classList.add("cart-payment-total");
+    discountElement.innerHTML = `
+      <span class="cart-payment-total-text">Discount:</span>
+      <span class="cart-payment-total-text">$${-discountAmount.toFixed(
+        2
+      )}</span>
+    `;
+
+    const cartPaymentContainer = document.querySelector(
+      ".cart-payment-total-container"
+    );
+    const lastPaymentTotal =
+      cartPaymentContainer.lastElementChild.previousElementSibling
+        .previousElementSibling;
+    cartPaymentContainer.insertBefore(
+      discountElement,
+      lastPaymentTotal.nextSibling
+    );
+  }
+
+  alert(coupon.message);
+
+  buttonApplyCoupon.disabled = true;
 }
