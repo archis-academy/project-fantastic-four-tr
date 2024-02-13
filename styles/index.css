@@ -594,7 +594,7 @@
 }
 
 .jbl-image {
-  filter: drop-shadow(0px 0px 75px white);
+  filter: drop-shadow(0px 0px 30px white);
 }
 
 /*Homepage Featured Product*/
@@ -644,7 +644,6 @@
 
 /*Homepage Explore Products*/
 .explore-products-sections {
-  border: 10px solid green;
   max-width: var(--max-width);
   margin: 80px auto;
 }
@@ -677,28 +676,33 @@
 }
 
 .explore-products-container {
-  border: 2px solid green;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
-  gap: 12px;
-  margin: 40px auto;
+  gap: 25px;
+  margin: 70px auto;
 }
 
 .explore-products-card {
-  border: 2px solid red;
+  position: relative;
 }
 
 .explore-products-card-img {
-  max-width: 100%;
+  width: 80%;
+  height: 300px;
 }
 
 .explore-products-card-title {
-  font-size: var(--space-12);
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
 }
 
 .explore-price-stars {
   display: flex;
+  gap: 20px;
 }
 
 .explore-products-card-price {
@@ -709,4 +713,15 @@
 .explore-products-comments {
   color: var(--gray);
   font-weight: bold;
+}
+
+.explore-wishlist-icon {
+  position: absolute;
+  right: 0;
+}
+
+.explore-shopping-cart-icon {
+  position: absolute;
+  right: 0;
+  top: 40px;
 }
