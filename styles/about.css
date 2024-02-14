@@ -1,0 +1,76 @@
+.header-navbar-list> :nth-child(3) {
+    border-bottom: solid var(--border-gray) 1px;
+}
+
+.about-page-sections {
+    max-width: var(--max-width);
+    margin: 50px auto;
+}
+
+/*OUR STORY*/
+.about-our-story {
+    display: flex;
+    justify-content: space-between;
+}
+
+.our-story-text {
+    margin: auto 0;
+}
+
+.our-story-title {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.our-story {
+    font-size: 16px;
+    font-weight: 300;
+    width: 515px;
+    padding-top: 30px;
+}
+
+/*Services Category*/
+.customer-services-category {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 100px auto;
+    padding: 50px 0;
+}
+
+.services-categories {
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 250px;
+    padding: 0 var(--space-50);
+    align-items: center;
+}
+
+.services-number {
+    font-size: 40px;
+    font-weight: 700;
+    padding: 15px 0;
+}
+
+/*customers*/
+.customer-cart-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 50px auto;
+}
+
+.customer-name {
+    padding: 10px 0;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.social-media-icon {
+    padding: 15px 0;
+    display: flex;
+    gap: 15px;
+}
