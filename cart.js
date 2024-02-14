@@ -50,17 +50,36 @@ const shippingPrice = document.querySelector("#shipping-price");
 const total = document.querySelector("#total");
 
 const apiUrl = "https://fakestoreapi.com/products";
-const randomProducts = [16, 18, 14, 0];
+const randomProducts = [0];
 
 async function fetchProducts() {
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    const selectedProducts = randomProducts.map((index) => data[index]);
+  const storedProducts = getStoredProducts();
+  console.log("TEST: ", storedProducts);
 
-    const productContainers = selectedProducts
-      .map(
-        (product) => `
+  // localStorage'da ürün varsa, sadece o ürünü listele
+  if (storedProducts.length > 0) {
+    console.log("Found products in localStorage:", storedProducts);
+    displayProducts(storedProducts);
+  } else {
+    console.log("No products in localStorage, fetching from API...");
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      if (data.length === 0) {
+        console.log("No products found in the API response.");
+      } else {
+        displayProducts(data);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
+}
+
+function displayProducts(products) {
+  cartProductContainer.innerHTML = ""; // Önceki ürünleri temizle
+  products.forEach((product) => {
+    const productHTML = `
       <div class="cart-product">
         <div class="cart-product-info">
           <img class="cart-product-image" src="${product.image}" alt="${product.title}" />
@@ -70,18 +89,19 @@ async function fetchProducts() {
         <input class="cart-product-input" value="01" type="number" />
         <span class="cart-product-subtotal">$${product.price}</span>
       </div>
-    `
-      )
-      .join("");
-
-    cartProductContainer.innerHTML += productContainers;
-
-    // Dinamik olarak eklenen öğeler için olay dinleyicilerini yeniden ekle
-    addEventListenersToDynamicElements();
-  } catch (error) {
-    console.error("Error fetching datas:", error);
-  }
+    `;
+    cartProductContainer.innerHTML += productHTML;
+  });
 }
+
+function getStoredProducts() {
+  // localStorage'dan ürünleri al ve dizi olarak döndür
+  const storedProducts =
+    JSON.parse(localStorage.getItem("selectedProduct")) || [];
+  return storedProducts;
+}
+
+
 buttonApplyCoupon.disabled = true;
 fetchProducts();
 checkPayment();

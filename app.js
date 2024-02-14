@@ -129,34 +129,51 @@ async function urunleriGetir() {
   const flashSalesDiv = document.querySelector("#flashSales");
   if (flashSalesDiv) {
     const response = await fetch("https://fakestoreapi.com/products");
-  const data = await response.json();
+    const data = await response.json();
 
-  const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
+    const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
 
-  flashSalesDiv.innerHTML = rastgeleUrunler
-    .map((urun) => {
-      return `<div class="f-product-card">
-              <div class="f-product-image-container">
-                <img class="f-product-image" src=${urun.image} />
-                <span class="f-product-discount">-50%</span>
-              </div>
-              <h3 class="f-product-title">${urun.title}</h3>
-              <div class="f-product-price-container">
-                <p class="f-product-new-price">$${indirimYap(
-                  urun.price,
-                  50
-                )}</p>
-                <s class="f-product-old-price">$${urun.price}</s>
-              </div>
-              <div class="f-products-ratings">
-                <div>
-                <img class="stars" src="./images/five-star.png" alt="star-icon">
-                </div>
-                <p class="f-products-comments">(${urun.rating.count})</p>
-              </div>
-            </div>`;
-    })
-    .join("");
+    flashSalesDiv.innerHTML = rastgeleUrunler
+      .map((urun, index) => {
+        return `<div class="f-product-card" data-index="${index}">
+                  <div class="f-product-image-container">
+                    <img class="f-product-image" src=${urun.image} />
+                    <span class="f-product-discount">-50%</span>
+                  </div>
+                  <h3 class="f-product-title">${urun.title}</h3>
+                  <div class="f-product-price-container">
+                    <p class="f-product-new-price">$${indirimYap(
+                      urun.price,
+                      50
+                    )}</p>
+                    <s class="f-product-old-price">$${urun.price}</s>
+                  </div>
+                  <div class="f-products-ratings">
+                    <div>
+                    <img class="stars" src="./images/five-star.png" alt="star-icon">
+                    </div>
+                    <p class="f-products-comments">(${urun.rating.count})</p>
+                  </div>
+                </div>`;
+      })
+      .join("");
+
+    // Tüm "f-product-card" öğelerini seç
+    const productCards = document.querySelectorAll(".f-product-card");
+
+    // Her "f-product-card" öğesine tıklama olay dinleyicisi ekle
+    productCards.forEach((card) => {
+      card.addEventListener("click", function () {
+        const index = this.getAttribute("data-index");
+        const selectedProduct = rastgeleUrunler[index];
+
+        // Seçilen ürünün bilgilerini yerel depolamaya ekle
+        localStorage.setItem(
+          "selectedProduct",
+          JSON.stringify(selectedProduct)
+        );
+      });
+    });
   } else {
     console.error("Flash sales element not found!");
   }
@@ -262,3 +279,44 @@ if (daysElement && hoursElement && minutesElement && secondsElement) {
 }
 
 // Homepage Featured Product bitiş
+
+// Locale storage Work in progress
+
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("f-product-cart")) {
+    const product = {
+      id: event.target.dataset.productId,
+      title: event.target.dataset.productTitle,
+      price: event.target.dataset.productPrice,
+      image: event.target.dataset.productImage,
+      quantity: 1,
+    };
+
+    // Ürünü Locale Storage'a ekleyin
+    addToCart(product);
+  }
+});
+
+function addToCart(product) {
+  // Mevcut sepeti Locale Storage'dan alın
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Sepetteki ürünlerin ID'lerini içeren bir dizi oluşturun
+  const productIds = cart.map((item) => item.id);
+
+  // Yeni ürünün sepette zaten var mı kontrol et
+  const existingProductIndex = productIds.indexOf(product.id);
+
+  // Eğer mevcut sepette aynı üründen varsa, miktarını artır
+  if (existingProductIndex !== -1) {
+    cart[existingProductIndex].quantity += 1;
+  } else {
+    // Yeni ürünü sepete ekleyin
+    cart.push(product);
+  }
+
+  // Sepeti tekrar Locale Storage'a kaydet
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Locale storage finish
