@@ -49,30 +49,12 @@ const subtotal = document.querySelector("#subtotal");
 const shippingPrice = document.querySelector("#shipping-price");
 const total = document.querySelector("#total");
 
-const apiUrl = "https://fakestoreapi.com/products";
-const randomProducts = [0];
-
-async function fetchProducts() {
+function displayProductsFromLocalStorage() {
   const storedProducts = getStoredProducts();
-  console.log("TEST: ", storedProducts);
-
-  // localStorage'da ürün varsa, sadece o ürünü listele
   if (storedProducts.length > 0) {
-    console.log("Found products in localStorage:", storedProducts);
     displayProducts(storedProducts);
   } else {
-    console.log("No products in localStorage, fetching from API...");
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      if (data.length === 0) {
-        console.log("No products found in the API response.");
-      } else {
-        displayProducts(data);
-      }
-    } catch (error) {
-      console.error("Error fetching products:", error);
-    }
+    console.log("No products in localStorage.");
   }
 }
 
@@ -96,14 +78,13 @@ function displayProducts(products) {
 
 function getStoredProducts() {
   // localStorage'dan ürünleri al ve dizi olarak döndür
-  const storedProducts =
-    JSON.parse(localStorage.getItem("selectedProduct")) || [];
+  const storedProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
   return storedProducts;
 }
 
-
 buttonApplyCoupon.disabled = true;
-fetchProducts();
+
+displayProductsFromLocalStorage();
 checkPayment();
 
 // Bu olmazsa "inner.html" komutları düzgün çalışmıyor, sadece HTML'in içindeki manuel olarak eklenenler çalışıyor.
@@ -112,8 +93,34 @@ cartProductContainer.addEventListener("input", function (event) {
   if (targetElement && targetElement.classList.contains("cart-product-input")) {
     addLeadingZero.call(targetElement);
     updateCartProductSubtotal(targetElement);
+
+    // Input değeri 0 olduğunda ürünü kaldırmak için kontrol yapalım
+    if (targetElement.value == 0) {
+      removeProduct(targetElement);
+    }
   }
 });
+
+function removeProduct(inputElement) {
+  const cartProduct = findClosestCartProduct(inputElement);
+  if (!cartProduct) return;
+
+  const productName =
+    cartProduct.querySelector(".cart-product-name").textContent;
+
+  // cart-product-container'dan kaldırma
+  cartProduct.remove();
+
+  // locale storage'dan kaldırma
+  let storedProducts = getStoredProducts();
+  storedProducts = storedProducts.filter(
+    (product) => product.title !== productName
+  );
+  localStorage.setItem("cartProducts", JSON.stringify(storedProducts));
+
+  // Sepetin güncellenmesi
+  updateCart();
+}
 
 buttonReturnShop.addEventListener("click", function () {
   window.location.href = "index.html";

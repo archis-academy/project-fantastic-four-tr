@@ -206,4 +206,8 @@ const products = [
     rating: { rate: 3.6, count: 145 },
   },
 ];
+
+localStorage.setItem("products", JSON.stringify(products));
+
+
 export default products;
