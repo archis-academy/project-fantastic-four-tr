@@ -235,14 +235,22 @@
 .f-product-image-container {
   width: 100%;
   height: var(--space-300);
+  border-radius: var(--space-6);
   position: relative;
   background-color: var(--gray-3);
   cursor: pointer;
+  overflow: hidden;
 }
 
 .f-product-image {
   width: 100%;
   height: 100%;
+}
+
+/* add-to-cart'ı "shared.css'te tanımladım. */
+.f-product-image-container:hover .add-to-cart {
+  transform: translateY(-48px);
+  transition: ease-in-out 0.3s;
 }
 
 .f-product-discount {
@@ -494,7 +502,6 @@
     width: 128px;
   }
 }
-
 
 /*Homepage Featured Product*/
 .homepage-featured-product-container {
