@@ -59,6 +59,16 @@ li {
   transform: translateY(var(--space-8));
 }
 
+.add-to-cart {
+  position: absolute;
+  text-align: center;
+  background-color: var(--black);
+  color: var(--white);
+  width: 100%;
+  padding: var(--space-8);
+  transition: ease-in-out 0.3s;
+}
+
 .section-starter {
   display: flex;
   justify-content: space-between;

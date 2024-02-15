@@ -119,7 +119,8 @@ function removeProduct(inputElement) {
   localStorage.setItem("cartProducts", JSON.stringify(storedProducts));
 
   // Sepetin güncellenmesi
-  updateCart();
+  alert("Product removed from the cart!");
+  //updateCart();
 }
 
 buttonReturnShop.addEventListener("click", function () {

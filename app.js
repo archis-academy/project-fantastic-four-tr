@@ -29,8 +29,6 @@ async function fetchData(url) {
     });
 }
 
-
-
 const apiUrl = "https://fakestoreapi.com/products";
 
 fetchData(apiUrl).then((data) => {
@@ -136,20 +134,33 @@ async function urunleriGetir() {
     console.error("Flash sales element not found!");
     return;
   }
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    allProducts = data;
+  const response = await fetch("https://fakestoreapi.com/products");
+  const data = await response.json();
+  allProducts = data;
 
-    const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
+  const rastgeleUrunler = [];
+  const selectedIndexes = [];
+  
+  while (rastgeleUrunler.length < 4) {
+      const randomIndex = Math.floor(Math.random() * 20);
+      if (!selectedIndexes.includes(randomIndex)) {
+          selectedIndexes.push(randomIndex);
+          rastgeleUrunler.push(data[randomIndex]);
+      }
+  }
+  
 
-    flashSalesDiv.innerHTML = rastgeleUrunler
-      .map((urun, index) => {
-        return `<div class="f-product-card" data-index="${index}">
+  flashSalesDiv.innerHTML = rastgeleUrunler
+    .map((urun, index) => {
+      return `<div class="f-product-card" data-index="${index}">
                   <div class="f-product-image-container">
                     <img class="f-product-image" src=${urun.image} />
+                    <p onclick="addToCart(${
+                      urun.id
+                    })" class="add-to-cart">Add To Cart</p>
                     <span class="f-product-discount">-50%</span>
                   </div>
-                  <h3 onclick="addToCart(${urun.id})" class="f-product-title">${urun.title}</h3>
+                  <h3 class="f-product-title">${urun.title}</h3>
                   <div class="f-product-price-container">
                     <p class="f-product-new-price">$${indirimYap(
                       urun.price,
@@ -161,20 +172,14 @@ async function urunleriGetir() {
                     <div>
                     <img class="stars" src="./images/five-star.png" alt="star-icon">
                     </div>
-                    <p onclick="tryClick()" class="f-products-comments">(${urun.rating.count})</p>
+                    <p class="f-products-comments">(${urun.rating.count})</p>
                   </div>
                 </div>`;
-      })
-      .join("");
+    })
+    .join("");
 }
 
 urunleriGetir();
-
-function tryClick() {
-  console.log("clicked");
-}
-
-
 
 const elemanlar = document.querySelectorAll(".category-box");
 
@@ -299,11 +304,14 @@ function addToCart(productId) {
   const cartProduct = cart.find((item) => item.id === productId);
 
   if (!cartProduct) {
-    const productToAdd = allProducts.find((product) => product.id === productId);
+    const productToAdd = allProducts.find(
+      (product) => product.id === productId
+    );
     const newCartProducts = [...cart, productToAdd];
     localStorage.setItem("cartProducts", JSON.stringify(newCartProducts));
   } else {
     // burada silme logic'i olacak
+    alert("The product has been removed from the cart");
     removeFromCart(productId);
   }
 }
@@ -316,5 +324,3 @@ function removeFromCart(productId) {
 }
 
 // Locale storage finish
-
-
