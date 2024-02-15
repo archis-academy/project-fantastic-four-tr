@@ -256,7 +256,7 @@ let limitedProducts = [];
 async function fetchExploreProducts() {
   const response = await fetch("https://fakestoreapi.com/products");
   const data = await response.json();
-  limitedProducts = data.slice(10,18);
+  limitedProducts = data.slice(10, 18);
 
   const exploreProductsHTML = limitedProducts
     .map((product) => {
@@ -283,7 +283,7 @@ async function fetchExploreProducts() {
            `;
     })
     .join("");
-    
+
   exploreProductsContainer.innerHTML = exploreProductsHTML;
   defaultFavoriteProduct();
 }
@@ -292,7 +292,9 @@ fetchExploreProducts();
 
 function addToWishlist(productId) {
   const favoriteIcon = document.getElementById(`favoriteIcon${productId}`);
-  const favoriteIconPath = document.getElementById(`favoriteIconPath${productId}`);
+  const favoriteIconPath = document.getElementById(
+    `favoriteIconPath${productId}`
+  );
 
   const wishlistProducts =
     JSON.parse(localStorage.getItem("wishlistProducts")) || [];
@@ -313,8 +315,10 @@ function addToWishlist(productId) {
 
     favoriteIcon.style.fill = "red";
     favoriteIconPath.style.stroke = "red";
+    renderWishlistHearts();
   } else {
     deleteProduct(productId);
+    renderWishlistHearts();
   }
 }
 
@@ -322,32 +326,41 @@ let wishlistProducts = [];
 
 function deleteProduct(productId) {
   const favoriteIcon = document.getElementById(`favoriteIcon${productId}`);
-  const favoriteIconPath = document.getElementById(`favoriteIconPath${productId}`);
+  const favoriteIconPath = document.getElementById(
+    `favoriteIconPath${productId}`
+  );
   const wishlistProduct = wishlistProducts.filter(
     (product) => product.id !== productId
   );
-  localStorage.setItem(
-    "wishlistProducts",
-    JSON.stringify(wishlistProduct)
-  );
-  wishlistProducts = wishlistProduct
+  localStorage.setItem("wishlistProducts", JSON.stringify(wishlistProduct));
+  wishlistProducts = wishlistProduct;
   favoriteIcon.style.fill = "none";
   favoriteIconPath.style.stroke = "black";
 }
 
 function defaultFavoriteProduct(productId) {
- const defaultWishlist = localStorage.getItem("wishlistProducts");
+  const defaultWishlist = localStorage.getItem("wishlistProducts");
   wishlistProducts = JSON.parse(defaultWishlist) || [];
   wishlistProducts.forEach((e) => {
-  productId = e.id;
-  document.getElementById(`favoriteIcon${productId}`).style.fill = "red";
-  document.getElementById(`favoriteIconPath${productId}`).style.stroke = "red";
-});
+    productId = e.id;
+    document.getElementById(`favoriteIcon${productId}`).style.fill = "red";
+    document.getElementById(`favoriteIconPath${productId}`).style.stroke =
+      "red";
+  });
 }
 
-function addToCart(productId) {
-  
+function renderWishlistHearts() {
+  const wishlistCountIcon = document.querySelector(".wishlist-count");
+  const wishlistProducts = JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+
+  if (wishlistProducts.length <= 0 || wishlistProducts.length === null) {
+    wishlistCountIcon.style.display = "none";
+  } else {
+    wishlistCountIcon.style.display = "flex";
+    wishlistCountIcon.innerText = wishlistProducts.length;
+  }
 }
 
+renderWishlistHearts();
 
 // Homepage Explore Products Bitiş
