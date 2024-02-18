@@ -138,17 +138,7 @@ async function urunleriGetir() {
   const data = await response.json();
   allProducts = data;
 
-  const rastgeleUrunler = [];
-  const selectedIndexes = [];
-  
-  while (rastgeleUrunler.length < 4) {
-      const randomIndex = Math.floor(Math.random() * 20);
-      if (!selectedIndexes.includes(randomIndex)) {
-          selectedIndexes.push(randomIndex);
-          rastgeleUrunler.push(data[randomIndex]);
-      }
-  }
-  
+  const rastgeleUrunler = [data[0], data[1], data[2], data[3]];
 
   flashSalesDiv.innerHTML = rastgeleUrunler
     .map((urun, index) => {
