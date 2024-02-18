@@ -175,19 +175,18 @@ async function urunleriGetir() {
     })
     .join("");
 
+  function renderWishlistHearts() {
+    const wishlistProducts =
+      JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+    wishlistProducts.forEach((product) => {
+      const flashFavoriteIcon = document.getElementById(
+        `flashFavoriteIcon${product.id}`
+      );
+      flashFavoriteIcon.style.fill = "red";
+    });
+  }
 
-    function renderWishlistHearts() {
-      const wishlistProducts =
-        JSON.parse(localStorage.getItem("wishlistProducts")) || [];
-      wishlistProducts.forEach((product) => {
-        const flashFavoriteIcon = document.getElementById(
-          `flashFavoriteIcon${product.id}`
-        );
-        flashFavoriteIcon.style.fill = "red";
-      });
-    }
-
-    renderWishlistHearts();
+  renderWishlistHearts();
 }
 
 function favoriteFlashSale(productId) {
