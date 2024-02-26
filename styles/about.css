@@ -45,9 +45,9 @@
 }
 
 .our-story {
-    font-size: 16px;
+    font-size: clamp (8px , 4vw , 16px);
     font-weight: 400;
-    width: 525px;
+    max-width: 525px;
     padding-top: 30px;
 }
 
@@ -86,7 +86,9 @@
     flex-wrap: wrap;
     margin: 50px auto;
 }
-
+.customer-img{
+    width: 100%;
+}
 .customer-name {
     padding: 10px 0;
     font-size: 28px;
