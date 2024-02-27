@@ -1,0 +1,100 @@
+.containers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+.columns-1 {
+  max-width: 1200px;
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+.container-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.columns-menu,
+.columns-menu-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+.col-p {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+.columns-href {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 16px 48px;
+  color: black;
+}
+.col-just {
+  color: #000;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+.col-paragraph {
+  text-align: center;
+  background-color: black;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  border-radius: 0px 0px 4px 4px;
+  cursor: pointer;
+}
+.column-product {
+  height: 275px;
+  width: 100%;
+}
+.explanation-product {
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+.prices {
+  font-family: "Poppins", sans-serif;
+  color: orangered;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+}
+.icons {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 1;
+  cursor: pointer;
+}
+.icon-container {
+  width: 16px;
+  height: 16px;
+  background-color: #000;
+}
+
+.productcard{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
