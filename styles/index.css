@@ -226,7 +226,6 @@
 .homepages-today-button {
   margin-left: 40%;
   justify-content: center;
-  
 }
 .f-product-card {
   flex: 1;
@@ -319,6 +318,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
 }
 
 .browse-title {
@@ -628,7 +628,6 @@
 .na-subtitle-context {
   gap: 20px;
   display: flex;
-
 }
 .na-subtitle-shape {
   width: 20px;
@@ -762,11 +761,11 @@
 }
 
 .na-arrivals-rightdown-one > img {
- width: 75%;
- height: 80%;
- flex: 1;
- padding-left: 10%;
- padding-top: 40px;
+  width: 75%;
+  height: 80%;
+  flex: 1;
+  padding-left: 10%;
+  padding-top: 40px;
 }
 
 .na-arrivals-rightdown-two > img {
@@ -777,7 +776,8 @@
   padding-top: 40px;
 }
 
-.na-rightdown-text, .na-rightdown-text-two {
+.na-rightdown-text,
+.na-rightdown-text-two {
   position: absolute;
   bottom: 50px;
   left: 50px;
@@ -806,11 +806,10 @@
 }
 
 @media (max-width: 700px) {
-
-  .new-arrivals-section{
+  .new-arrivals-section {
     padding: 0 10px;
   }
-  .na-arrivals{
+  .na-arrivals {
     flex-direction: column;
   }
 
@@ -818,20 +817,19 @@
     width: 100%;
   }
 
-  .na-services{
+  .na-services {
     flex-wrap: wrap;
   }
 }
 
-
 @keyframes elevate {
-  0%{
+  0% {
     transform: translateY(0);
   }
-  50%{
+  50% {
     transform: translateY(-30px);
   }
-  100%{
+  100% {
     transform: translateY(0);
   }
 }

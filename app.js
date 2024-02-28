@@ -130,6 +130,11 @@ let allProducts = [];
 
 async function urunleriGetir() {
   const flashSalesDiv = document.querySelector("#flashSales");
+  const bestSellingProductsContainer = document.querySelector(
+    "#bestSellingProductsContainer"
+  );
+  console.log(bestSellingProductsContainer);
+
   if (!flashSalesDiv) {
     console.error("Flash sales element not found!");
     return;
@@ -139,6 +144,36 @@ async function urunleriGetir() {
   allProducts = data;
 
   const rastgeleUrunler = [data[0], data[1], data[2], data[3]];
+
+  const bestSellingProducts = [data[4], data[5], data[6], data[7]];
+
+  bestSellingProductsContainer.innerHTML = bestSellingProducts
+    .map((urun, index) => {
+      return `<div class="f-product-card" data-index="${index}">
+                  <div class="f-product-image-container">
+                    <img class="f-product-image" src=${urun.image} />
+                    <p onclick="addToCart(${
+                      urun.id
+                    })" class="add-to-cart">Add To Cart</p>
+                    <span class="f-product-discount">-30%</span>
+                  </div>
+                  <h3 class="f-product-title">${urun.title}</h3>
+                  <div class="f-product-price-container">
+                    <p class="f-product-new-price">$${indirimYap(
+                      urun.price,
+                      30
+                    )}</p>
+                    <s class="f-product-old-price">$${urun.price}</s>
+                  </div>
+                  <div class="f-products-ratings">
+                    <div>
+                    <img class="stars" src="./images/five-star.png" alt="star-icon">
+                    </div>
+                    <p class="f-products-comments">(${urun.rating.count})</p>
+                  </div>
+                </div>`;
+    })
+    .join("");
 
   flashSalesDiv.innerHTML = rastgeleUrunler
     .map((urun, index) => {
