@@ -16,7 +16,7 @@ searchInput.addEventListener("input", (e) => {
   filterFunction(e);
 });
 
-function fetchData(url) {
+async function fetchData(url) {
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -30,6 +30,7 @@ function fetchData(url) {
 }
 
 const apiUrl = "https://fakestoreapi.com/products";
+
 fetchData(apiUrl).then((data) => {
   const menClothingProducts = data.filter(
     (product) => product.category.toLowerCase() === "men's clothing"
@@ -125,40 +126,86 @@ function indirimYap(fiyat, indirim) {
   return sonuc.toFixed(2);
 }
 
+let allProducts = [];
+
 async function urunleriGetir() {
   const flashSalesDiv = document.querySelector("#flashSales");
+  const bestSellingProductsContainer = document.querySelector(
+    "#bestSellingProductsContainer"
+  );
+  console.log(bestSellingProductsContainer);
+
+  if (!flashSalesDiv) {
+    console.error("Flash sales element not found!");
+    return;
+  }
   const response = await fetch("https://fakestoreapi.com/products");
   const data = await response.json();
+  allProducts = data;
 
-  const rastgeleUrunler = [data[5], data[8], data[3], data[12]];
+  const rastgeleUrunler = [data[0], data[1], data[2], data[3]];
+
+  const bestSellingProducts = [data[4], data[5], data[6], data[7]];
+
+  bestSellingProductsContainer.innerHTML = bestSellingProducts
+    .map((urun, index) => {
+      return `<div class="f-product-card" data-index="${index}">
+                  <div class="f-product-image-container">
+                    <img class="f-product-image" src=${urun.image} />
+                    <p onclick="addToCart(${
+                      urun.id
+                    })" class="add-to-cart">Add To Cart</p>
+                    <span class="f-product-discount">-30%</span>
+                  </div>
+                  <h3 class="f-product-title">${urun.title}</h3>
+                  <div class="f-product-price-container">
+                    <p class="f-product-new-price">$${indirimYap(
+                      urun.price,
+                      30
+                    )}</p>
+                    <s class="f-product-old-price">$${urun.price}</s>
+                  </div>
+                  <div class="f-products-ratings">
+                    <div>
+                    <img class="stars" src="./images/five-star.png" alt="star-icon">
+                    </div>
+                    <p class="f-products-comments">(${urun.rating.count})</p>
+                  </div>
+                </div>`;
+    })
+    .join("");
 
   flashSalesDiv.innerHTML = rastgeleUrunler
-    .map((urun) => {
-      return `<div class="f-product-card">
-              <div class="f-product-image-container">
-                <img class="f-product-image" src=${urun.image} />
-                <span class="f-product-discount">-50%</span>
-              </div>
-              <h3 class="f-product-title">${urun.title}</h3>
-              <div class="f-product-price-container">
-                <p class="f-product-new-price">$${indirimYap(
-                  urun.price,
-                  50
-                )}</p>
-                <s class="f-product-old-price">$${urun.price}</s>
-              </div>
-              <div class="f-products-ratings">
-                <div>
-                <img class="stars" src="./images/five-star.png" alt="star-icon">
-                </div>
-                <p class="f-products-comments">(${urun.rating.count})</p>
-              </div>
-            </div>`;
+    .map((urun, index) => {
+      return `<div class="f-product-card" data-index="${index}">
+                  <div class="f-product-image-container">
+                    <img class="f-product-image" src=${urun.image} />
+                    <p onclick="addToCart(${
+                      urun.id
+                    })" class="add-to-cart">Add To Cart</p>
+                    <span class="f-product-discount">-50%</span>
+                  </div>
+                  <h3 class="f-product-title">${urun.title}</h3>
+                  <div class="f-product-price-container">
+                    <p class="f-product-new-price">$${indirimYap(
+                      urun.price,
+                      50
+                    )}</p>
+                    <s class="f-product-old-price">$${urun.price}</s>
+                  </div>
+                  <div class="f-products-ratings">
+                    <div>
+                    <img class="stars" src="./images/five-star.png" alt="star-icon">
+                    </div>
+                    <p class="f-products-comments">(${urun.rating.count})</p>
+                  </div>
+                </div>`;
     })
     .join("");
 }
 
 urunleriGetir();
+
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
@@ -172,6 +219,11 @@ elemanlar.forEach((link) => {
 // buse geri sayım
 function countdown(targetDate) {
   const countdownElement = document.querySelector(".section-countdown");
+
+  if (!countdownElement) {
+    console.error("Countdown element not found!");
+    return;
+  }
 
   function updateCountdown() {
     const currentDate = new Date();
@@ -223,29 +275,80 @@ countdown(targetDate);
 // buse geri sayım bitiş
 
 // Homepage Featured Product
-let hedefTarih = new Date("2024-03-28T23:59:59").getTime();
+const daysElement = document.getElementById("days");
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
 
-let zamanlayici = setInterval(function () {
-  let simdikiTarih = new Date().getTime();
+if (daysElement && hoursElement && minutesElement && secondsElement) {
+  let hedefTarih = new Date("2024-03-28T23:59:59").getTime();
 
-  let kalanZaman = hedefTarih - simdikiTarih;
+  let zamanlayici = setInterval(function () {
+    let simdikiTarih = new Date().getTime();
 
-  let gun = Math.floor(kalanZaman / (1000 * 60 * 60 * 24));
-  let saat = Math.floor(
-    (kalanZaman % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  let dakika = Math.floor((kalanZaman % (1000 * 60 * 60)) / (1000 * 60));
-  let saniye = Math.floor((kalanZaman % (1000 * 60)) / 1000);
+    let kalanZaman = hedefTarih - simdikiTarih;
 
-  document.getElementById("days").innerHTML = gun < 10 ? "0" + gun : gun;
-  document.getElementById("hours").innerHTML = saat < 10 ? "0" + saat : saat;
-  document.getElementById("minutes").innerHTML =
-    dakika < 10 ? "0" + dakika : dakika;
-  document.getElementById("seconds").innerHTML =
-    saniye < 10 ? "0" + saniye : saniye;
-}, 1000);
+    let gun = Math.floor(kalanZaman / (1000 * 60 * 60 * 24));
+    let saat = Math.floor(
+      (kalanZaman % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    let dakika = Math.floor((kalanZaman % (1000 * 60 * 60)) / (1000 * 60));
+    let saniye = Math.floor((kalanZaman % (1000 * 60)) / 1000);
+
+    daysElement.innerHTML = gun < 10 ? "0" + gun : gun;
+    hoursElement.innerHTML = saat < 10 ? "0" + saat : saat;
+    minutesElement.innerHTML = dakika < 10 ? "0" + dakika : dakika;
+    secondsElement.innerHTML = saniye < 10 ? "0" + saniye : saniye;
+  }, 1000);
+} else {
+  console.error("Elements not found");
+}
+
 // Homepage Featured Product bitiş
 
+// Locale storage Work in progress
+
+// document.addEventListener("click", function (event) {
+//   if (event.target.classList.contains("f-product-cart")) {
+//     const product = {
+//       id: event.target.dataset.productId,
+//       title: event.target.dataset.productTitle,
+//       price: event.target.dataset.productPrice,
+//       image: event.target.dataset.productImage,
+//       quantity: 1,
+//     };
+
+//     // Ürünü Locale Storage'a ekleyin
+//     addToCart(product);
+//   }
+// });
+
+function addToCart(productId) {
+  const cart = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+  const cartProduct = cart.find((item) => item.id === productId);
+
+  if (!cartProduct) {
+    const productToAdd = allProducts.find(
+      (product) => product.id === productId
+    );
+    const newCartProducts = [...cart, productToAdd];
+    localStorage.setItem("cartProducts", JSON.stringify(newCartProducts));
+  } else {
+    // burada silme logic'i olacak
+    alert("The product has been removed from the cart");
+    removeFromCart(productId);
+  }
+}
+
+function removeFromCart(productId) {
+  const cart = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+  const newCart = cart.filter((item) => item.id !== productId);
+  localStorage.setItem("cartProducts", JSON.stringify(newCart));
+}
+
+// Locale storage finish
 // Homepage Explore Products Başlangıç
 const exploreProductsContainer = document.querySelector(
   "#exploreProductsContainer"

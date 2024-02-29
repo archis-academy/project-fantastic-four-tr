@@ -80,6 +80,74 @@
         </div>
       </div>
     </header>
+    <main>
+      <!-- Cart Page -->
+      <section class="cart-section">
+        <div class="page-title">
+          <a class="page-title-link" href="index.html">Home</a>
+          <span>/</span>
+          <a class="page-title-link" href="cart.html">Cart</a>
+        </div>
+        <div class="cart-product cart-product-title">
+          <span>Product</span>
+          <span>Price</span>
+          <span>Quantity</span>
+          <span>Subtotal</span>
+        </div>
+        <div class="cart-product-container">
+          <!-- Items pulled from "cart.js" -->
+        </div>
+        <div class="cart-product-button-container">
+          <button
+            id="button-return-shop"
+            class="secondary-button cart-product-button"
+          >
+            Return To Shop
+          </button>
+          <button
+            id="button-update-cart"
+            class="secondary-button cart-product-button"
+          >
+            Update Cart
+          </button>
+        </div>
+        <div class="cart-payment-container">
+          <div class="cart-payment-coupon-container">
+            <input
+              id="input-coupon-code"
+              type="text"
+              placeholder="Coupon Code"
+            />
+            <button id="apply-coupon-button" class="primary-button">
+              Apply Coupon
+            </button>
+          </div>
+          <div class="cart-payment-total-container">
+            <span class="cart-payment-total-title">Cart Total</span>
+            <div class="cart-payment-total">
+              <span class="cart-payment-total-text">Subtotal:</span>
+              <span id="subtotal" class="cart-payment-total-text">$0</span>
+            </div>
+            <div class="cart-payment-total">
+              <span class="cart-payment-total-text">Shipping:</span>
+              <span id="shipping-price" class="cart-payment-total-text"
+                >$0</span
+              >
+            </div>
+            <div class="cart-payment-total">
+              <span class="cart-payment-total-text">Total:</span>
+              <span id="total" class="cart-payment-total-text">$0</span>
+            </div>
+            <button
+              id="button-checkout"
+              class="primary-button cart-payment-button"
+            >
+              Procees to checkout
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
     <!--Footer-->
     <footer class="main-footer">
       <div class="footer-wrapper">
@@ -150,6 +218,7 @@
       </div>
       <p class="footer-copyright">@ Copyright Rimel 2022. All right reserved</p>
     </footer>
-    <script type="module" src="app.js"></script>
+    <script src="app.js"></script>
+    <script src="cart.js"></script>
   </body>
 </html>
