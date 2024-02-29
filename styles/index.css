@@ -714,14 +714,23 @@
   color: var(--gray);
   font-weight: bold;
 }
-
-.explore-wishlist-icon {
-  position: absolute;
-  right: 0;
+.explore-pro-img-box{
+  position: relative;
+  
 }
-
-.explore-shopping-cart-icon {
+.explore-pro-svg-box{
   position: absolute;
-  right: 0;
-  top: 40px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.explore-svg-icon {
+  padding: 5px 5px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0px 0px 20px -5px rgba(0,0,0,0.82);
+}
+.check-icon{
+  display: none;
 }

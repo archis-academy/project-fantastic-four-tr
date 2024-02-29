@@ -223,7 +223,7 @@ countdown(targetDate);
 // buse geri sayım bitiş
 
 // Homepage Featured Product
-let hedefTarih = new Date("2024-02-28T23:59:59").getTime();
+let hedefTarih = new Date("2024-03-28T23:59:59").getTime();
 
 let zamanlayici = setInterval(function () {
   let simdikiTarih = new Date().getTime();
@@ -256,23 +256,31 @@ let limitedProducts = [];
 async function fetchExploreProducts() {
   const response = await fetch("https://fakestoreapi.com/products");
   const data = await response.json();
-  limitedProducts = data.slice(10,18);
+  limitedProducts = data.slice(10, 18);
 
   const exploreProductsHTML = limitedProducts
     .map((product) => {
       return `
             <div class="explore-products-card">
-              <svg id="favoriteIcon${product.id}" onclick="addToWishlist(${product.id})" class="explore-wishlist-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div class="explore-pro-img-box">
+            <div class="explore-pro-svg-box">
+              <svg id="favoriteIcon${product.id}" onclick="addToWishlist(${product.id})" class="explore-svg-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id="favoriteIconPath${product.id}" d="M11 7C8.239 7 6 9.216 6 11.95C6 14.157 6.875 19.395 15.488 24.69C15.6423 24.7839 15.8194 24.8335 16 24.8335C16.1806 24.8335 16.3577 24.7839 16.512 24.69C25.125 19.395 26 14.157 26 11.95C26 9.216 23.761 7 21 7C18.239 7 16 10 16 10C16 10 13.761 7 11 7Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <svg id="shoppingCartIcon${product.id}" onclick="addToCart(${product.id})" class="explore-shopping-cart-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="shoppingCartIcon${product.id}" onclick="addToCart(${product.id})" class="explore-svg-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11 27C11.5523 27 12 26.5523 12 26C12 25.4477 11.5523 25 11 25C10.4477 25 10 25.4477 10 26C10 26.5523 10.4477 27 11 27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M25 27C25.5523 27 26 26.5523 26 26C26 25.4477 25.5523 25 25 25C24.4477 25 24 25.4477 24 26C24 26.5523 24.4477 27 25 27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M3 5H7L10 22H26" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M10 16.6667H25.59C25.7056 16.6667 25.8177 16.6267 25.9072 16.5535C25.9966 16.4802 26.0579 16.3782 26.0806 16.2648L27.8806 7.26479C27.8951 7.19222 27.8934 7.11733 27.8755 7.04552C27.8575 6.97371 27.8239 6.90678 27.7769 6.84956C27.73 6.79234 27.6709 6.74625 27.604 6.71462C27.5371 6.68299 27.464 6.66661 27.39 6.66666H8" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-
+              <svg id="shoppingCheckIcon${product.id}" onclick="addToCart(${product.id})" class="explore-svg-icon check-icon" width="32px" height="32px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_iconCarrier"> <path stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 5L8 15l-5-4"/> </g>
+              </svg>
+              </div>
               <img class="explore-products-card-img" src=${product.image} />
+              </div>
               <h3 class="explore-products-card-title">${product.title}</h3>
               <div class="explore-price-stars">
                 <p class="explore-products-card-price">$${product.price}</p>
@@ -283,16 +291,19 @@ async function fetchExploreProducts() {
            `;
     })
     .join("");
-    
+
   exploreProductsContainer.innerHTML = exploreProductsHTML;
   defaultFavoriteProduct();
+  defaultCartProduct();
 }
-
+let wishlistProducts = [];
 fetchExploreProducts();
 
 function addToWishlist(productId) {
   const favoriteIcon = document.getElementById(`favoriteIcon${productId}`);
-  const favoriteIconPath = document.getElementById(`favoriteIconPath${productId}`);
+  const favoriteIconPath = document.getElementById(
+    `favoriteIconPath${productId}`
+  );
 
   const wishlistProducts =
     JSON.parse(localStorage.getItem("wishlistProducts")) || [];
@@ -318,36 +329,79 @@ function addToWishlist(productId) {
   }
 }
 
-let wishlistProducts = [];
-
 function deleteProduct(productId) {
   const favoriteIcon = document.getElementById(`favoriteIcon${productId}`);
-  const favoriteIconPath = document.getElementById(`favoriteIconPath${productId}`);
-  const wishlistProduct = wishlistProducts.filter(
+  const favoriteIconPath = document.getElementById(
+    `favoriteIconPath${productId}`
+  );
+  const newWishlistProducts = wishlistProducts.filter(
     (product) => product.id !== productId
   );
-  localStorage.setItem(
-    "wishlistProducts",
-    JSON.stringify(wishlistProduct)
-  );
-  wishlistProducts = wishlistProduct
+  localStorage.setItem("wishlistProducts", JSON.stringify(newWishlistProducts));
+  wishlistProducts = newWishlistProducts;
   favoriteIcon.style.fill = "none";
   favoriteIconPath.style.stroke = "black";
 }
-
 function defaultFavoriteProduct(productId) {
- const defaultWishlist = localStorage.getItem("wishlistProducts");
+  const defaultWishlist = localStorage.getItem("wishlistProducts");
   wishlistProducts = JSON.parse(defaultWishlist) || [];
   wishlistProducts.forEach((e) => {
-  productId = e.id;
-  document.getElementById(`favoriteIcon${productId}`).style.fill = "red";
-  document.getElementById(`favoriteIconPath${productId}`).style.stroke = "red";
-});
+    productId = e.id;
+    document.getElementById(`favoriteIcon${productId}`).style.fill = "red";
+    document.getElementById(`favoriteIconPath${productId}`).style.stroke =
+      "red";
+  });
 }
-
+let cartProducts = [];
 function addToCart(productId) {
-  
+  document.getElementById(`shoppingCheckIcon${productId}`).style.display =
+    "flex";
+  document.getElementById(`shoppingCartIcon${productId}`).style.display =
+    "none";
+  const unparsedProducts = localStorage.getItem("cartProducts");
+  const newShopingProduct = limitedProducts.find(
+    (product) => product.id === productId
+  );
+
+  if (unparsedProducts) {
+    cartProducts = JSON.parse(unparsedProducts);
+  }
+
+  const isMatch = cartProducts.find(
+    (product) => product.id === newShopingProduct.id
+  );
+
+  if (!isMatch) {
+    const productsToAdd = [...cartProducts, newShopingProduct];
+
+    localStorage.setItem("cartProducts", JSON.stringify(productsToAdd));
+
+    cartProducts = productsToAdd;
+  } else {
+    deleteCartProduct(productId);
+  }
 }
 
-
+function deleteCartProduct(productId) {
+  document.getElementById(`shoppingCheckIcon${productId}`).style.display =
+    "none";
+  document.getElementById(`shoppingCartIcon${productId}`).style.display =
+    "flex";
+  const newShopingProduct = cartProducts.filter(
+    (product) => product.id !== productId
+  );
+  localStorage.setItem("cartProducts", JSON.stringify(newShopingProduct));
+  cartProducts = newShopingProduct;
+}
+function defaultCartProduct(productId) {
+  const defaultShoping = localStorage.getItem("cartProducts");
+  cartProducts = JSON.parse(defaultShoping) || [];
+  cartProducts.forEach((e) => {
+    productId = e.id;
+    document.getElementById(`shoppingCheckIcon${productId}`).style.display =
+      "flex";
+    document.getElementById(`shoppingCartIcon${productId}`).style.display =
+      "none";
+  });
+}
 // Homepage Explore Products Bitiş
