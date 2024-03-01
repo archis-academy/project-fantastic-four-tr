@@ -312,6 +312,21 @@ li {
 #search-dropdown :hover {
   background-color: var(--gray);
 }
+
+.wishlist-count {
+  color: white;
+  position: absolute;
+  right: -2px;
+  bottom: 2px;
+  background-color: red;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
 /* Footer */
 .footer-wrapper,
 .footer-input-container .footer-mail-container,
@@ -503,6 +518,7 @@ li {
   .icon-link img {
     width: var(--space-30);
   }
+
   .search-image {
     width: var(--space-24);
   }
