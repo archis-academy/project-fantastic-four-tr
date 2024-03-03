@@ -209,13 +209,33 @@ urunleriGetir();
 const elemanlar = document.querySelectorAll(".category-box");
 
 elemanlar.forEach((link) => {
+  const elemanSvg = link.querySelector(".icon-img");
+  const elemanIsim = link.querySelector(".icon-name");
+
   link.addEventListener("click", () => {
-    elemanlar.forEach((link) => {
-      link.style.backgroundColor = "white";
+    elemanlar.forEach((otherLink) => {
+      otherLink.style.backgroundColor = "white";
+
+      const otherSvg = otherLink.querySelector(".icon-img");
+      if (otherSvg) {
+        otherSvg.querySelectorAll("*").forEach((eleman) => {
+          eleman.style.stroke = "black";
+        });
+      }
+      const otherIsim = otherLink.querySelector(".icon-name");
+      if (otherIsim) {
+        otherIsim.style.color = "black";
+      }
     });
     link.style.backgroundColor = "#DB4444";
+
+    elemanSvg.querySelectorAll("*").forEach((eleman) => {
+      eleman.style.stroke = "white";
+    });
+    elemanIsim.style.color = "white";
   });
 });
+
 // buse geri sayım
 function countdown(targetDate) {
   const countdownElement = document.querySelector(".section-countdown");
